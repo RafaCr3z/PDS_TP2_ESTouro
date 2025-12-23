@@ -42,7 +42,7 @@ public class ManipuladorCreationVisitor implements TorreVisitor {
 
     @Override
     public void visit(TorreSniper t) {
-        manipulador = new ManipuladorBalista(t); // Reusing Balista manipulator as it controls angle
+        manipulador = new ManipuladorSniper(t);
     }
 
 }
