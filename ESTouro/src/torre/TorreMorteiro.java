@@ -1,10 +1,9 @@
 package torre;
 
+import bloon.Bloon;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.List;
-
-import bloon.Bloon;
 import prof.jogos2D.image.*;
 import prof.jogos2D.util.DetectorColisoes;
 import prof.jogos2D.util.ImageLoader;
@@ -19,7 +18,7 @@ import torre.projetil.Projetil;
 public class TorreMorteiro extends TorreDefault {
 
 	private Point areaAlvo; // destino das bombas
-	private int alcance; // alcance máximo da torre
+	private final int alcance; // alcance máximo da torre
 
 	/**
 	 * Cria a torre Morteiro
@@ -69,48 +68,53 @@ public class TorreMorteiro extends TorreDefault {
 	}
 
 	@Override
-	public Projetil[] atacar(List<Bloon> bloons) {
-		atualizarCicloDisparo();
+	protected boolean podeDispararSemAlvo() {
+		// Morteiro pode disparar sem alvos específicos
+		return areaAlvo != null;
+	}
 
-		// vamos buscar o desenho pois vai ser preciso várias vezes
-		ComponenteMultiAnimado anim = getComponente();
+	@Override
+	protected Bloon escolherAlvo(List<Bloon> alvosPossiveis) {
+		// Morteiro não usa estratégias de alvo normais
+		// Retorna null mas podeDispararSemAlvo() permite disparo
+		return null;
+	}
 
-		// já acabou a animação de disparar? volta à animação de pausa
-		if (anim.getAnim() == ATAQUE_ANIM && anim.numCiclosFeitos() >= 1) {
-			anim.setAnim(PAUSA_ANIM);
+	@Override
+	protected List<Bloon> filtrarAlvosNoAlcance(List<Bloon> bloons) {
+		// Morteiro sempre dispara, independente de ter alvos
+		return List.of();
+	}
+
+	@Override
+	protected void orientarTorre(Bloon alvo) {
+		// Morteiro não se orienta para alvos específicos
+		// Mantém orientação para área alvo definida
+		if (areaAlvo != null) {
+			Point centro = getComponente().getPosicaoCentro();
+			double angle = DetectorColisoes.getAngulo(areaAlvo, centro);
+			getComponente().setAngulo(angle);
 		}
+	}
 
-		// determinar a posição do bloon alvo, consoante o método de ataque
-		Point posAlvo = areaAlvo;
-		if (posAlvo == null)
+	@Override
+	protected Projetil[] criarProjeteis(Bloon alvo) {
+		if (areaAlvo == null)
 			return new Projetil[0];
-
-		// ver o ângulo que o alvo faz com a torre, para assim rodar esta
-		double angle = DetectorColisoes.getAngulo(posAlvo, getComponente().getPosicaoCentro());
-
-		// se vai disparar daqui a pouco, começamos já com a animação de ataque
-		// para sincronizar a frame de disparo com o disparo real
-		sincronizarFrameDisparo(anim);
-
-		// se ainda não está na altura de disparar, não dispara
-		if (!podeDisparar())
-			return new Projetil[0];
-
-		// disparar
-		resetTempoDisparar();
+			
 		Point centro = getComponente().getPosicaoCentro();
+		double angle = getComponente().getAngulo();
 		Point disparo = getPontoDisparo();
+		
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);
 		int py = (int) (disparo.y * cosA + disparo.x * senA);
-
-		// primeiro calcular o ponto de disparo
 		Point shoot = new Point(centro.x + px, centro.y + py);
 
-		// depois criar os projéteis
+		// Criar bomba dirigida para área alvo
 		Projetil p[] = new Projetil[1];
-		// reajustar o ângulo para ser desde o ponto de disparo até ao ponto de destino
+		// Reajustar o ângulo para ser desde o ponto de disparo até ao ponto de destino
 		angle = DetectorColisoes.getAngulo(areaAlvo, shoot);
 		ComponenteVisual img = new ComponenteSimples(ImageLoader.getLoader().getImage("data/torres/bomba.gif"));
 		BombaDirigida bm = new BombaDirigida(img, angle, 12, 2, getMundo());
@@ -119,11 +123,6 @@ public class TorreMorteiro extends TorreDefault {
 		p[0].setPosicao(shoot);
 		p[0].setAlcance(800); // com este alcance nunca pára
 		return p;
-	}
-
-	@Override
-	protected Projetil[] criarProjetil(Bloon alvo) {
-		return new Projetil[0];
 	}
 
 	@Override

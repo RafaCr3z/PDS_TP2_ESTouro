@@ -1,11 +1,10 @@
 package torre.estrategia;
 
-import java.awt.Point;
+import bloon.Bloon;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import bloon.Bloon;
 import torre.Torre;
 
 public class EstrategiaJuntos implements EstrategiaAtaque {

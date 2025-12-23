@@ -1,9 +1,8 @@
 package torre;
 
+import bloon.Bloon;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-
-import bloon.Bloon;
 import prof.jogos2D.image.ComponenteAnimado;
 import prof.jogos2D.image.ComponenteMultiAnimado;
 import prof.jogos2D.image.ComponenteSimples;
@@ -31,7 +30,7 @@ public class TorreNinja extends TorreDefault {
     }
 
     @Override
-    protected Projetil[] criarProjetil(Bloon alvo) {
+    protected Projetil[] criarProjeteis(Bloon alvo) {
         Point centro = getComponente().getPosicaoCentro();
         double angle = getComponente().getAngulo();
 

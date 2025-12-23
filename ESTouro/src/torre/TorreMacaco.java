@@ -1,9 +1,8 @@
 package torre;
 
+import bloon.Bloon;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-
-import bloon.Bloon;
 import prof.jogos2D.image.*;
 import prof.jogos2D.util.ImageLoader;
 import torre.projetil.Dardo;
@@ -26,7 +25,7 @@ public class TorreMacaco extends TorreDefault {
 	}
 
 	@Override
-	protected Projetil[] criarProjetil(Bloon alvo) {
+	protected Projetil[] criarProjeteis(Bloon alvo) {
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 

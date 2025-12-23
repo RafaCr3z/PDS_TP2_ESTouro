@@ -1,10 +1,8 @@
 package torre;
 
+import bloon.Bloon;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.util.List;
-
-import bloon.Bloon;
 import prof.jogos2D.image.*;
 import prof.jogos2D.util.ImageLoader;
 import torre.projetil.Dardo;
@@ -25,50 +23,28 @@ public class TorreOctogonal extends TorreDefault {
 	}
 
 	@Override
-	public Projetil[] atacar(List<Bloon> bloons) {
-		atualizarCicloDisparo();
+	protected void orientarTorre(Bloon alvo) {
+		// Torre octogonal não se orienta para alvos específicos
+		// Mantém sua orientação atual
+	}
 
-		// vamos buscar o desenho pois vai ser preciso várias vezes
-		ComponenteMultiAnimado anim = getComponente();
-
-		// já acabou a animação de disparar? volta à animação de pausa
-		if (anim.getAnim() == ATAQUE_ANIM && anim.numCiclosFeitos() >= 1) {
-			anim.setAnim(PAUSA_ANIM);
-		}
-
-		// ver quais os bloons que estão ao alcance
-		List<Bloon> alvosPossiveis = getBloonsInRadius(bloons, getComponente().getPosicaoCentro(), getRaioAcao());
-		if (alvosPossiveis.isEmpty())
-			return new Projetil[0];
-
-		// ver o ângulo que o alvo faz com a torre, para assim rodar esta
-		double angle = (double) 0; // neste caso o ângulo não interessa pois são 8
-
-		// se vai disparar daqui a pouco, começamos já com a animação de ataque
-		// para sincronizar a frame de disparo com o disparo real
-		sincronizarFrameDisparo(anim);
-
-		// se ainda não está na altura de disparar, não dispara
-		if (!podeDisparar())
-			return new Projetil[0];
-
-		// disparar
-		resetTempoDisparar();
-
-		// primeiro calcular o ponto de disparo
-		Point centro1 = getComponente().getPosicaoCentro();
+	@Override
+	protected Projetil[] criarProjeteis(Bloon alvo) {
+		Point centro = getComponente().getPosicaoCentro();
 		Point disparo = getPontoDisparo();
+		double angle = 0; // ângulo não importa para cálculo do ponto de disparo
+		
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);
-		int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
-		Point shoot = new Point(centro1.x + px, centro1.y + py);
+		int py = (int) (disparo.y * cosA + disparo.x * senA);
+		Point shoot = new Point(centro.x + px, centro.y + py);
 
-		// depois criar os projéteis
-		/// disparar os 8 dardos
+		// Criar os 8 dardos em direções diferentes
 		Projetil p[] = new Projetil[8];
 		double angulo = baseAngle + Math.PI / 2;
 		double incAng = Math.PI / 4;
+		
 		for (int i = 0; i < 8; i++) {
 			ComponenteVisual img = new ComponenteAnimado(new Point(),
 					(BufferedImage) ImageLoader.getLoader().getImage("data/torres/dardo.gif"), 2, 2);
@@ -78,11 +54,6 @@ public class TorreOctogonal extends TorreDefault {
 			angulo -= incAng;
 		}
 		return p;
-	}
-
-	@Override
-	protected Projetil[] criarProjetil(Bloon alvo) {
-		return new Projetil[0];
 	}
 
 	/**
