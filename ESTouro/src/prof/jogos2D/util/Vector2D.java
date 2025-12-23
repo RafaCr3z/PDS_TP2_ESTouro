@@ -5,8 +5,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 
 /**
- * Class utilitária que representa um vetor a duas dimensões
- * @author F. Sérgio Barbosa
+ * Class utilitaria que representa um vetor a duas dimensoes
+ * @author F. Sergio Barbosa
  *
  */
 public class Vector2D {
@@ -44,8 +44,8 @@ public class Vector2D {
 		return x*x + y*y;
 	}
 	
-	/** devolve o ângulo que este vetor faz com a horizontal. O valor é entre 0 e 2*Math.PI
-	 * @return  o ângulo que este vetor faz com a horizontal
+	/** devolve o angulo que este vetor faz com a horizontal. O valor e entre 0 e 2*Math.PI
+	 * @return  o angulo que este vetor faz com a horizontal
 	 */
 	public double getAngulo(){
 		double ang = Math.atan2(y, x);
@@ -83,7 +83,7 @@ public class Vector2D {
 
 	/** aplica este vetor a um ponto, transformando-o noutro
 	 * @param pt o ponto de origem do vetor
-	 * @return o ponto após a aplicação do vetor
+	 * @return o ponto apos a aplicacao do vetor
 	 */
 	public Double aplicaPonto(Double pt) {
 		return new Point2D.Double( pt.x+x, pt.y+y);
