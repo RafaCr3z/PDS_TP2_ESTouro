@@ -13,7 +13,6 @@ import mundo.Mundo;
 
 /**
  * Classe que representa uma bomba que explode quando chega a uma área
- * (exemplo: é lançada pelo morteiro)
  */
 public class BombaDirigida extends ProjetilDefault {
 	private int raioExplosao = 50; // raio da explosão
@@ -27,11 +26,6 @@ public class BombaDirigida extends ProjetilDefault {
 	/**
 	 * Cria a bomba
 	 * 
-	 * @param img     imagem da bomba
-	 * @param dir     direção do movimento
-	 * @param veloc   velocidade do movimento
-	 * @param estrago estrago que inflinge nos bloons
-	 * @param m       mundo onde se movimenta
 	 */
 	public BombaDirigida(ComponenteVisual img, double dir, double veloc, int estrago, Mundo m) {
 		super(img, dir, veloc, estrago);
@@ -44,7 +38,6 @@ public class BombaDirigida extends ProjetilDefault {
 	/**
 	 * define o ponto de ataque da bomba
 	 * 
-	 * @param p ponto de ataque
 	 */
 	public void setDestino(Point p) {
 		destino = p;

@@ -5,9 +5,13 @@ import java.util.List;
 import bloon.Bloon;
 import torre.Torre;
 
+/**
+ * Estratégia de ataque que escolhe o bloon mais próximo da torre.
+ */
 public class EstrategiaPerto implements EstrategiaAtaque {
     @Override
     public Bloon escolherAlvo(Torre t, List<Bloon> bloons) {
+        // Se não há bloons, retorna null
         if (bloons.isEmpty())
             return null;
         Point centro = t.getComponente().getPosicaoCentro();
@@ -21,6 +25,7 @@ public class EstrategiaPerto implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
+        // Retorna o nome da estratégia
         return "Perto";
     }
 }

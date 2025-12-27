@@ -12,6 +12,7 @@ import bloon.Bloon;
  */
 public class BloonEscudo extends BloonDecorator {
 
+    // O valor do escudo que absorve dano explosivo
     private int shield;
 
     /**
@@ -27,17 +28,21 @@ public class BloonEscudo extends BloonDecorator {
 
     @Override
     public void explode(int estrago) {
+        // Verifica se o escudo ainda está ativo
         if (shield > 0) {
+            // Subtrai o dano explosivo do escudo
             shield -= estrago;
+            // Se o escudo for quebrado (shield < 0), calcula o dano restante
             if (shield < 0) {
                 int sobra = -shield;
                 shield = 0;
                 // O dano restante passa para o bloon
                 super.explode(sobra);
             }
-            // Dano totalmente absorvido
+            // Dano totalmente absorvido pelo escudo
             return;
         }
+        // Sem escudo, passa o dano explosivo diretamente para o bloon
         super.explode(estrago);
     }
 

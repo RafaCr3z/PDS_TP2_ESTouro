@@ -27,11 +27,6 @@ public class BombaImpacto extends ProjetilDefault {
 	/**
 	 * Cria a bomba.
 	 * 
-	 * @param img     imagem da bomba
-	 * @param dir     direção de deslocamento
-	 * @param veloc   velocidade de deslocamento
-	 * @param estrago quantidade de estrago que provoca nos bloons
-	 * @param m       mundo onde se movimenta
 	 */
 	public BombaImpacto(ComponenteVisual img, double dir, double veloc, int estrago, Mundo m) {
 		super(img, dir, veloc, estrago);

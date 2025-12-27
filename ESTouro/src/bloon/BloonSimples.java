@@ -30,6 +30,10 @@ public class BloonSimples implements Bloon {
 
 	private List<BloonObserver> obs = new ArrayList<BloonObserver>();
 
+	/**
+	 * Construtor para criar um bloon simples com imagem, imagem de explosão, velocidade, resistência e valor.
+	 * 
+	 */
 	BloonSimples(ComponenteVisual imagem, ComponenteVisual imagemPop, float speed, int resistence, int value) {
 		this.imagem = Objects.requireNonNull(imagem);
 		this.imagemPop = Objects.requireNonNull(imagemPop);
@@ -40,15 +44,16 @@ public class BloonSimples implements Bloon {
 
 	@Override
 	public void desenhar(Graphics2D g) {
+		// Desenha a imagem do bloon na tela
 		imagem.desenhar(g);
 	}
 
 	/**
 	 * permite a um componente definir qual o seu aspeto
 	 * 
-	 * @param v o novo aspeto do componente
 	 */
 	protected void setComponente(ComponenteVisual v) {
+		// Define a nova imagem para o bloon
 		imagem = v;
 	}
 
@@ -105,6 +110,7 @@ public class BloonSimples implements Bloon {
 
 	@Override
 	public void mover() {
+		// Avança a posição no caminho com base na velocidade
 		posCaminho += velocidade;
 		Point p = caminho.getPoint(posCaminho);
 		if (p == null) {
@@ -115,6 +121,7 @@ public class BloonSimples implements Bloon {
 			resistencia = 0;
 			return;
 		}
+		// Define a nova posição
 		setPosicao(p);
 	}
 
@@ -174,10 +181,9 @@ public class BloonSimples implements Bloon {
 	/**
 	 * Diminui a resistência do bloon de acordo com o impacto que recebeu
 	 * 
-	 * @param estrago o estrago infligido pelo impacto
-	 * @return o estrago sobrante
 	 */
 	protected int sofreEstrago(int estrago) {
+		// Subtrai o estrago da resistência
 		resistencia -= estrago;
 		if (resistencia < 0) {
 			estrago = -resistencia;
@@ -189,20 +195,22 @@ public class BloonSimples implements Bloon {
 
 	@Override
 	public void addBloonObserver(BloonObserver bo) {
+		// Adiciona um observador à lista
 		obs.add(bo);
 	}
 
 	@Override
 	public void removeBloonObserver(BloonObserver bo) {
+		// Remove um observador da lista
 		obs.remove(bo);
 	}
 
 	/**
 	 * retorna a lista de observadores
 	 * 
-	 * @return a lista de observadores
 	 */
 	protected List<BloonObserver> getObservers() {
+		// Retorna uma lista imutável dos observadores
 		return Collections.unmodifiableList(obs);
 	}
 
@@ -210,6 +218,7 @@ public class BloonSimples implements Bloon {
 	 * notifica que o bloon estourou
 	 */
 	protected void notificarBloonEstourou() {
+		// Notifica todos os observadores que o bloon estourou
 		for (int i = obs.size() - 1; i >= 0; i--)
 			obs.get(i).bloonEstourou(this);
 	}
@@ -218,12 +227,14 @@ public class BloonSimples implements Bloon {
 	 * Notifica que o bloon consegiu chegar ao fim do caminho
 	 */
 	protected void notificarBloonEscapou() {
+		// Notifica todos os observadores que o bloon escapou
 		for (int i = obs.size() - 1; i >= 0; i--)
 			obs.get(i).bloonEscapou(this);
 	}
 
 	@Override
 	public Bloon clone() {
+		// Clona as imagens para o novo bloon
 		ComponenteVisual imgClone = imagem.clone();
 		ComponenteVisual popClone = imagemPop.clone();
 		// O clone começa sem observadores e sem caminho definido
