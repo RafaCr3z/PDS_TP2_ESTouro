@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "EstouroJogo",
+            "request": "launch",
+            "mainClass": "game.EstouroJogo",
+            "cwd": "${workspaceFolder}/ESTouro",
+            "classPaths": [
+                "${workspaceFolder}/ESTouro/bin"
+            ]
+        }
+    ]
+}

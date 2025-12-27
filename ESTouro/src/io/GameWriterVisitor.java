@@ -20,26 +20,26 @@ public class GameWriterVisitor implements TorreVisitor {
     @Override
     public void visit(TorreMacaco t) {
         writePos(t);
-        out.println("macaco");
+        out.println(TorreConstantes.MACACO);
     }
 
     @Override
     public void visit(TorreOctogonal t) {
         writePos(t);
-        out.print("octo\t");
+        out.print(TorreConstantes.OCTO + "\t");
         out.println(t.getComponente().getAngulo());
     }
 
     @Override
     public void visit(TorreCanhao t) {
         writePos(t);
-        out.println("canhao");
+        out.println(TorreConstantes.CANHAO);
     }
 
     @Override
     public void visit(TorreMorteiro t) {
         writePos(t);
-        out.print("morteiro\t");
+        out.print(TorreConstantes.MORTEIRO + "\t");
         Point p = t.getAreaAlvo();
         out.println(p.x + "\t" + p.y);
     }
@@ -47,20 +47,20 @@ public class GameWriterVisitor implements TorreVisitor {
     @Override
     public void visit(TorreBalista t) {
         writePos(t);
-        out.print("balista\t");
+        out.print(TorreConstantes.BALISTA + "\t");
         out.println(t.getComponente().getAngulo());
     }
 
     @Override
     public void visit(TorreNinja t) {
         writePos(t);
-        out.println("ninja");
+        out.println(TorreConstantes.NINJA);
     }
 
     @Override
     public void visit(TorreSniper t) {
         writePos(t);
-        out.print("sniper\t");
+        out.print(TorreConstantes.SNIPER + "\t");
         out.println(t.getComponente().getAngulo());
     }
 }

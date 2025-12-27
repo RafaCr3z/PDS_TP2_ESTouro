@@ -24,11 +24,15 @@ public class TorreSniper extends TorreDefault {
 
     private static final int ALCANCE_MAX = 2000; // Alcance prático "infinito"
     private static final int DANO = 5;
+    private static final int RITMO_DISPARO = 40;
+    private static final int DELAY_ANIMACAO = 2;
+    private static final int VELOCIDADE_PROJETIL = 10;
+    private static final int DANO_PROJETIL = 2;
 
     public TorreSniper(BufferedImage img) {
         // Ajustar parâmetros conforme desejado (ritmo, delay, pivot)
         super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 2),
-                40, 2, new Point(20, 0), ALCANCE_MAX);
+                RITMO_DISPARO, DELAY_ANIMACAO, new Point(20, 0), ALCANCE_MAX);
     }
 
     @Override
@@ -75,7 +79,7 @@ public class TorreSniper extends TorreDefault {
         ComponenteVisual img = new ComponenteAnimado(new Point(),
                 (BufferedImage) ImageLoader.getLoader().getImage("data/torres/dardo.gif"), 2, 2);
         // Dardo normal após impacto
-        p[0] = new Dardo(img, angle, 10, 2); // Velocidade 10, Dano 2 (dardo normal)
+        p[0] = new Dardo(img, angle, VELOCIDADE_PROJETIL, DANO_PROJETIL); // Velocidade 10, Dano 2 (dardo normal)
         p[0].setPosicao(pos);
         p[0].setAlcance(ALCANCE_MAX);
         return p;

@@ -14,13 +14,13 @@ public class TorreCreator {
 	private ImageLoader loader = ImageLoader.getLoader();
 
 	public TorreCreator() {
-		fabrica.put("macaco", this::criarMacaco);
-		fabrica.put("octo", this::criarOctogonal);
-		fabrica.put("canhao", this::criarCanhao);
-		fabrica.put("morteiro", this::criarMorteiro);
-		fabrica.put("balista", this::criarBalista);
-		fabrica.put("ninja", this::criarNinja);
-		fabrica.put("sniper", this::criarSniper);
+		fabrica.put(TorreConstantes.MACACO, this::criarMacaco);
+		fabrica.put(TorreConstantes.OCTO, this::criarOctogonal);
+		fabrica.put(TorreConstantes.CANHAO, this::criarCanhao);
+		fabrica.put(TorreConstantes.MORTEIRO, this::criarMorteiro);
+		fabrica.put(TorreConstantes.BALISTA, this::criarBalista);
+		fabrica.put(TorreConstantes.NINJA, this::criarNinja);
+		fabrica.put(TorreConstantes.SNIPER, this::criarSniper);
 	}
 
 	/**

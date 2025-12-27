@@ -8,6 +8,7 @@ import bloon.Bloon;
 import mundo.Mundo;
 import prof.jogos2D.image.ComponenteMultiAnimado;
 import torre.projetil.Projetil;
+import torre.estrategia.EstrategiaAtaque;
 
 /**
  * Interface que representa o comportamento que as torres devem ter. As torres
@@ -20,14 +21,14 @@ public interface Torre extends Cloneable {
 	 * 
 	 * @param estrategia a nova estratégia
 	 */
-	public void setEstrategia(torre.estrategia.EstrategiaAtaque estrategia);
+	public void setEstrategia(EstrategiaAtaque estrategia);
 
 	/**
 	 * Devolve a estratégia de ataque da torre.
 	 * 
 	 * @return a estratégia de ataque
 	 */
-	public torre.estrategia.EstrategiaAtaque getEstrategia();
+	public EstrategiaAtaque getEstrategia();
 
 	/**
 	 * Define a posição no écran da torre
