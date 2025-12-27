@@ -1,24 +1,19 @@
 package game;
 
-import java.awt.*;
-
-import javax.swing.*;
-
 import bloon.Bloon;
 import bloon.BloonObserver;
 import game.manipulator.ManipuladorCreator;
 import game.manipulator.ManipuladorTorre;
-
-import java.io.*;
-import java.awt.event.*;
-
-import prof.jogos2D.image.*;
-import torre.*;
-import prof.jogos2D.util.ImageLoader;
-import java.util.List;
-
-import mundo.*;
 import io.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.List;
+import javax.swing.*;
+import mundo.*;
+import prof.jogos2D.image.*;
+import prof.jogos2D.util.ImageLoader;
+import torre.*;
 
 /**
  * classe que representa o jogo
@@ -765,9 +760,5 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 		EstouroJogo estouro = new EstouroJogo();
 		estouro.setVisible(true);
 		estouro.play();
-		// Para testar um nível em particular, comentar a linha anterior e usar
-		// estouro.play("data/niveis/nivel_4_2.txt", 10000, 200);
-		// ou para usar um dos níveis de testar balões (ou torres)
-		// estouro.play("data/niveis_teste/teste_rosa.txt", 10000, 200);
 	}
 }

@@ -44,12 +44,12 @@ public class GameReader {
 				torres[i] = creator.criarTorrePorNome(info[2]);
 				torres[i].setPosicao(new Point(x, y));
 				switch (info[2]) {
-					case "octo":
-					case "balista":
+					case TorreConstantes.OCTO:
+					case TorreConstantes.BALISTA:
 						double angulo = Double.parseDouble(info[3]);
 						torres[i].getComponente().setAngulo(angulo);
 						break;
-					case "morteiro":
+					case TorreConstantes.MORTEIRO:
 						int ax = Integer.parseInt(info[3]);
 						int ay = Integer.parseInt(info[4]);
 						((TorreMorteiro) torres[i]).setAreaAlvo(new Point(ax, ay));

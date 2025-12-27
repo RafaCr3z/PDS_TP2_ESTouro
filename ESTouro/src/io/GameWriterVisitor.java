@@ -33,14 +33,14 @@ public class GameWriterVisitor implements TorreVisitor {
     public void visit(TorreMacaco t) {
         // Escreve posição e tipo da torre macaco
         writePos(t);
-        out.println("macaco");
+        out.println(TorreConstantes.MACACO);
     }
 
     @Override
     public void visit(TorreOctogonal t) {
         // Escreve posição, tipo e ângulo da torre octogonal
         writePos(t);
-        out.print("octo\t");
+        out.print(TorreConstantes.OCTO + "\t");
         out.println(t.getComponente().getAngulo());
     }
 
@@ -48,14 +48,14 @@ public class GameWriterVisitor implements TorreVisitor {
     public void visit(TorreCanhao t) {
         // Escreve posição e tipo da torre canhão
         writePos(t);
-        out.println("canhao");
+        out.println(TorreConstantes.CANHAO);
     }
 
     @Override
     public void visit(TorreMorteiro t) {
         // Escreve posição, tipo e área de alvo da torre morteiro
         writePos(t);
-        out.print("morteiro\t");
+        out.print(TorreConstantes.MORTEIRO + "\t");
         Point p = t.getAreaAlvo();
         out.println(p.x + "\t" + p.y);
     }
@@ -64,7 +64,7 @@ public class GameWriterVisitor implements TorreVisitor {
     public void visit(TorreBalista t) {
         // Escreve posição, tipo e ângulo da torre balista
         writePos(t);
-        out.print("balista\t");
+        out.print(TorreConstantes.BALISTA + "\t");
         out.println(t.getComponente().getAngulo());
     }
 
@@ -72,14 +72,14 @@ public class GameWriterVisitor implements TorreVisitor {
     public void visit(TorreNinja t) {
         // Escreve posição e tipo da torre ninja
         writePos(t);
-        out.println("ninja");
+        out.println(TorreConstantes.NINJA);
     }
 
     @Override
     public void visit(TorreSniper t) {
         // Escreve posição, tipo e ângulo da torre sniper
         writePos(t);
-        out.print("sniper\t");
+        out.print(TorreConstantes.SNIPER + "\t");
         out.println(t.getComponente().getAngulo());
     }
 }

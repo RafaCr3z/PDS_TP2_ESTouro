@@ -12,6 +12,8 @@ import mundo.Mundo;
 import prof.jogos2D.image.ComponenteMultiAnimado;
 import prof.jogos2D.util.DetectorColisoes;
 import torre.projetil.Projetil;
+import torre.estrategia.EstrategiaAtaque;
+import torre.estrategia.EstrategiaPrimeiro;
 
 /**
  * Classe que implementa os comportamentos e variáveis comuns a todos as torres.
@@ -24,10 +26,15 @@ public abstract class TorreDefault implements Torre {
 	/** Desenho da torre usando componente multi-animado. */
 	private ComponenteMultiAnimado imagem; // desenho da torre
 
+<<<<<<< HEAD
 	/** Estratégia de ataque da torre (modo de ataque). */
 	private torre.estrategia.EstrategiaAtaque estrategia = new torre.estrategia.EstrategiaPrimeiro(); // modo de ataque
 																										// da torre
 	/** Raio de ataque, isto é, área circular onde consegue detetar bloons. */
+=======
+	private EstrategiaAtaque estrategia = new EstrategiaPrimeiro(); // modo de ataque
+																	// da torre
+>>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
 	private int raioAtaque; // raio de ataque, isto é, área circular onde consegue detetar bloons
 	/** Ponto de onde sai o disparo (relativo ao centro da torre). */
 	private Point pontoDisparo; // ponto de onde sai o disparo
@@ -194,7 +201,7 @@ public abstract class TorreDefault implements Torre {
 	 * 
 	 */
 	@Override
-	public void setEstrategia(torre.estrategia.EstrategiaAtaque estrategia) {
+	public void setEstrategia(EstrategiaAtaque estrategia) {
 		this.estrategia = estrategia;
 	}
 
@@ -203,7 +210,7 @@ public abstract class TorreDefault implements Torre {
 	 * 
 	 */
 	@Override
-	public torre.estrategia.EstrategiaAtaque getEstrategia() {
+	public EstrategiaAtaque getEstrategia() {
 		return estrategia;
 	}
 
@@ -235,7 +242,8 @@ public abstract class TorreDefault implements Torre {
 		// se vai disparar daqui a pouco, começamos já com a animação de ataque
 		sincronizarFrameDisparo(anim);
 
-		// se ainda não está na altura de disparar, ou não tem condições para disparar, não dispara
+		// se ainda não está na altura de disparar, ou não tem condições para disparar,
+		// não dispara
 		if (!podeDisparar() || (!podeDispararSemAlvo() && alvo == null))
 			return new Projetil[0];
 
