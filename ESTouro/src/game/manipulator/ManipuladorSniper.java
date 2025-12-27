@@ -20,6 +20,10 @@ public class ManipuladorSniper extends ManipuladorVazio {
 	// composite para usar transparências nas miras
 	private static final AlphaComposite transp = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
 
+	/**
+	 * Construtor para o manipulador do sniper.
+	 * 
+	 */
 	public ManipuladorSniper(Torre t) {
 		super(t);
 	}

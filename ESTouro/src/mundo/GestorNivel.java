@@ -9,8 +9,7 @@ import bloon.BloonCreator;
 
 /**
  * Classe que vai ser responsável pela gestão do nivel (ou round) como lê-lo e
- * gerar os bloons após o começo do round. A indicação da criação dos bloons é
- * dada por ciclos. A cada ciclo o gerador define uma lista dos bloons a criar
+ * gerar os bloons após o começo do round.
  */
 public class GestorNivel {
 	private int cicloAtual; // ciclo de criação atual
@@ -28,7 +27,6 @@ public class GestorNivel {
 	/**
 	 * adiciona um caminho ao nível
 	 * 
-	 * @param c caminho a adicionar
 	 */
 	public void addCaminho(Caminho c) {
 		caminhos.add(c);
@@ -37,7 +35,6 @@ public class GestorNivel {
 	/**
 	 * remove um caminho
 	 * 
-	 * @param idx índice do caminho a remover
 	 */
 	public void removeCaminho(int idx) {
 		caminhos.remove(idx);
@@ -46,7 +43,6 @@ public class GestorNivel {
 	/**
 	 * devolve o número de caminhos
 	 * 
-	 * @return o número de caminhos
 	 */
 	public int getNumeroCaminhos() {
 		return caminhos.size();
@@ -55,8 +51,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o caminho com um dado índice
 	 * 
-	 * @param idx o índice do caminho a pesquisar
-	 * @return o caminho com o índice indicado
 	 */
 	public Caminho getCaminho(int idx) {
 		return caminhos.get(idx);
@@ -70,7 +64,6 @@ public class GestorNivel {
 	/**
 	 * define a imagem de fundo
 	 * 
-	 * @param fundo a nova imagem de fundo
 	 */
 	public void setFundo(BufferedImage fundo) {
 		this.fundo = fundo;
@@ -79,7 +72,6 @@ public class GestorNivel {
 	/**
 	 * retorna a imagem de fundo
 	 * 
-	 * @return a imagem de fundo
 	 */
 	public BufferedImage getFundo() {
 		return fundo;
@@ -88,7 +80,6 @@ public class GestorNivel {
 	/**
 	 * define o nome do ficheiro da imagem de fundo
 	 * 
-	 * @param nomeFundo o nome da nova imagem de fundo
 	 */
 	public void setNomeImagemFundo(String nomeFundo) {
 		this.nomeImagemFundo = nomeFundo;
@@ -97,7 +88,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o nome do ficheiro da imagem de fundo
 	 * 
-	 * @return o nome do ficheiro da imagem de fundo
 	 */
 	public String getNomeImagemFundo() {
 		return nomeImagemFundo;
@@ -106,7 +96,6 @@ public class GestorNivel {
 	/**
 	 * Define o prémio que se recebe por terminar o nível
 	 * 
-	 * @param premio o prémio por terminar o nível
 	 */
 	public void setPremioRound(int premio) {
 		this.premioRound = premio;
@@ -115,7 +104,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o prémio por terminar o nível
 	 * 
-	 * @return o prémio por terminar o nível
 	 */
 	public int getPremioRound() {
 		return premioRound;
@@ -130,8 +118,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o ciclo de criação com o índice idx
 	 * 
-	 * @param idx o índice do ciclo de criação pretendido
-	 * @return o ciclo de criação com o índice indicado
 	 */
 	public CicloCriacaoInfo getCicloCriacaoInfo(int idx) {
 		return ciclos.get(idx);
@@ -140,7 +126,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o número de ciclos de criação que existem
 	 * 
-	 * @return o número de ciclos de criação que existem
 	 */
 	public int getNumeroCiclos() {
 		return ciclos.size();
@@ -149,7 +134,6 @@ public class GestorNivel {
 	/**
 	 * devolve uma lista com os bloons a criar neste ciclo
 	 * 
-	 * @return uma lista com os bloons a criar neste ciclo
 	 */
 	public List<Bloon> criarBloons() {
 		// ver se ainda tem bloons para criar
@@ -188,7 +172,6 @@ public class GestorNivel {
 	/**
 	 * Retorna o ciclo onde ocorre o último ciclo de criação
 	 * 
-	 * @return o ciclo onde ocorre o último ciclo de criação
 	 */
 	public int getUltimoCicloCriacao() {
 		return ciclos.getLast().getCiclo();
@@ -197,7 +180,6 @@ public class GestorNivel {
 	/**
 	 * indica se ainda faltam criar bloons
 	 * 
-	 * @return true se ainda faltam criar bloons
 	 */
 	public boolean aindaTemBloons() {
 		return proximoCiclo < ciclos.size();
@@ -206,7 +188,6 @@ public class GestorNivel {
 	/**
 	 * adicionar um novo ciclo de criação
 	 * 
-	 * @param cinfo ciclo de criação a ser adicionado
 	 */
 	public void addCicloCriação(CicloCriacaoInfo cinfo) {
 		int i = ciclos.size();
@@ -219,8 +200,6 @@ public class GestorNivel {
 	/**
 	 * Remove um ciclo de criação de um dado caminho
 	 * 
-	 * @param cicloIdx   índice do ciclo de criação a remover
-	 * @param caminhoIdx índice do caminho de onde remover o ciclo
 	 */
 	public void removeCicloCriacao(int cicloIdx, int caminhoIdx) {
 		for (int i = ciclos.size() - 1; i >= 0; i--) {

@@ -9,9 +9,7 @@ import torre.projetil.Dardo;
 import torre.projetil.Projetil;
 
 /**
- * Classe que representa a torre octogonal. Esta torre dispara 8 dardos, um em
- * cada direção dos seus lançadores. Só dispara quando tem bloons dentro do seu
- * raio de ação.
+ * Classe que representa a torre octogonal
  */
 public class TorreOctogonal extends TorreDefault {
 
@@ -59,7 +57,6 @@ public class TorreOctogonal extends TorreDefault {
 	/**
 	 * Altera o ângulo da octo
 	 * 
-	 * @param angle o novo ângulo
 	 */
 	public void setAngle(double angle) {
 		getComponente().setAngulo(angle);

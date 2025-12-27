@@ -6,16 +6,10 @@ import torre.Torre;
 
 /**
  * Interface que define a estratégia de ataque de uma torre.
- * O padrão Strategy é usado aqui para encapsular os diferentes algoritmos de
- * escolha de alvo.
  */
 public interface EstrategiaAtaque {
     /**
      * Escolhe um alvo de dentro de uma lista de bloons (já filtrada pelo alcance).
-     * 
-     * @param t      a torre que está a atacar (para acesso a posição, etc)
-     * @param bloons lista de bloons disponiveis (dentro do alcance)
-     * @return o bloon escolhido ou null se nenhum for adequado
      */
     Bloon escolherAlvo(Torre t, List<Bloon> bloons);
 
@@ -26,16 +20,7 @@ public interface EstrategiaAtaque {
 
     /**
      * Método estático para verificar o funcionamento das estratégias de ataque.
-     * Testa a lógica de seleção de alvos da EstrategiaLonge e EstrategiaForte.
      * 
-     * Este método serve como verificação unitária das implementações das estratégias,
-     * testando os seguintes cenários:
-     * - EstrategiaLonge: seleção do bloon mais distante fisicamente
-     * - EstrategiaForte: seleção do bloon com maior valor
-     * - Conformidade com a interface EstrategiaAtaque
-     * - Casos extremos (listas vazias, bloons únicos)
-     * 
-     * @return true se todos os testes passarem, false caso contrário
      */
     static boolean verificarEstrategias() {
         System.out.println("=== Verificação das Estratégias de Ataque ===");

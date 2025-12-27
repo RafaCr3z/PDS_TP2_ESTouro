@@ -25,8 +25,6 @@ public class EscolhaPistasDialog extends JDialog {
     /**
      * Cria a janela de escolha de pistas
      * 
-     * @param owner   janela mãe (o jogo)
-     * @param nPistas número de pistas a apresentar
      */
     public EscolhaPistasDialog(Window owner, int nPistas) {
         super(owner, "Escolha de pista");
@@ -83,7 +81,6 @@ public class EscolhaPistasDialog extends JDialog {
      * Retorna o nímero da pista escolhida pelo jogador. Se não escolheu pista,
      * escolhe a primeira pista (pista 0)
      * 
-     * @return o número da pista escolhida
      */
     public int getPista() {
         return track != -1 ? track : 0;
@@ -92,7 +89,6 @@ public class EscolhaPistasDialog extends JDialog {
     /**
      * Indica se é para usar o último nível ou começar numa pista nova
      * 
-     * @return true se é para usar o último nível
      */
     public boolean usarSave() {
         return usarLast;

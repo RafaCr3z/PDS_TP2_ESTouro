@@ -14,10 +14,6 @@ public class Dardo extends ProjetilDefault {
 	/**
 	 * Cria um dardo
 	 * 
-	 * @param img     imagem do dardo
-	 * @param dir     direção de movimento
-	 * @param veloc   velocidade de movimento
-	 * @param estrago quantidade de estrago que inflinge nos bloons
 	 */
 	public Dardo(ComponenteVisual img, double dir, double veloc, int estrago) {
 		super(img, dir, veloc, estrago);

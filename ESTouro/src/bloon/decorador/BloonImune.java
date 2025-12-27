@@ -9,9 +9,14 @@ import bloon.Bloon;
  */
 public class BloonImune extends BloonDecorator {
 
+    // Indica se o bloon é imune a dano perfurante
     private boolean imunePerfurante;
+    // Indica se o bloon é imune a dano explosivo
     private boolean imuneExplosao;
 
+    /**
+     * Cria um bloon com imunidades específicas.
+     */
     public BloonImune(Bloon bloon, boolean imunePerfurante, boolean imuneExplosao) {
         super(bloon);
         this.imunePerfurante = imunePerfurante;
@@ -20,22 +25,15 @@ public class BloonImune extends BloonDecorator {
 
     @Override
     public int pop(int estrago) {
+        // Se imune a dano perfurante, retorna o estrago sem sofrer dano
         if (imunePerfurante)
             return estrago; // Retorna o estrago sem sofrer dano (projétil passa mas não aleija)
-        // Ou devolve 0?
-        // Bloon.pop docs: "Se o bloon não aguentar ... devolve qual o estrago que não
-        // suportou."
-        // Se suporta tudo (ignora), devia retornar 0?
-        // Mas se retornar 0, o projétil pode pensar que acertou e consumiu "estrago"?
-        // Normalmente return 0 significa "damage handled".
-        // Se eu retorno "estrago", significa "não aguentei (sobrou) this much damage"?
-        // No, BloonSimples returns estrago if alive?
-        // Let's check BloonSimples.pop.
         return super.pop(estrago);
     }
 
     @Override
     public void explode(int estrago) {
+        // Se imune a dano explosivo, ignora a explosão
         if (imuneExplosao)
             return; // Ignora explosão
         super.explode(estrago);

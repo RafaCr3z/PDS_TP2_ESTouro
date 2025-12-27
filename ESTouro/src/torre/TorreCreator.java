@@ -26,8 +26,6 @@ public class TorreCreator {
 	/**
 	 * cria a torre com um dado nome
 	 * 
-	 * @param nome nome da torre a criar
-	 * @return a torre criada, ou null se não existir torre com o nome dado
 	 */
 	public Torre criarTorrePorNome(String nome) {
 		if (fabrica.containsKey(nome))

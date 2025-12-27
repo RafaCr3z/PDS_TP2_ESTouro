@@ -45,7 +45,6 @@ public class ConfiguradorTorres extends JPanel {
 	 * método utilizado para definir qual a torre escolhida, ou seja, qual a que
 	 * está a ser modificada
 	 * 
-	 * @param t a torre a ser modificada
 	 */
 	public void setSelecionada(Torre t) {
 		escolhida = t;
@@ -60,8 +59,6 @@ public class ConfiguradorTorres extends JPanel {
 	/**
 	 * Cria um botão para um modo de ataque
 	 * 
-	 * @param est a estratégia de ataque
-	 * @return o botão criado
 	 */
 	private JToggleButton criarBotaoAtaque(EstrategiaAtaque est) {
 		JToggleButton button = new JToggleButton(est.getNome());

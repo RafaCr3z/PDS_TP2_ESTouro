@@ -18,7 +18,6 @@ import torre.projetil.Projetil;
 /**
  * Torre Sniper: Alcance infinito, dano imediato (5), escolha de alvo por
  * estratégia.
- * Dispara um dardo que começa no alvo e continua.
  */
 public class TorreSniper extends TorreDefault {
 

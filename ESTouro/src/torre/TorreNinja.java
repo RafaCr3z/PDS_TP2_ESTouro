@@ -13,8 +13,7 @@ import torre.projetil.Dardo;
 import torre.projetil.Projetil;
 
 /**
- * Classe que representa a torre ninja. Esta torre dispara alternadamente 3
- * dardos ou 1 granada para os bloons de acordo com o seu modo de ataque.
+ * Classe que representa a torre ninja.
  */
 public class TorreNinja extends TorreDefault {
 
@@ -23,7 +22,6 @@ public class TorreNinja extends TorreDefault {
     /**
      * Cria uma torre ninja
      * 
-     * @param img a imagem da torre
      */
     public TorreNinja(BufferedImage img) {
         super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 3), 30, 8, new Point(20, 0), 100);

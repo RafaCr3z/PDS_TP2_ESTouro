@@ -18,7 +18,6 @@ public class TorreMacaco extends TorreDefault {
 	/**
 	 * Cria a torre macaco
 	 * 
-	 * @param img a imagem da torre
 	 */
 	public TorreMacaco(BufferedImage img) {
 		super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 3), 30, 8, new Point(15, 15), 100);

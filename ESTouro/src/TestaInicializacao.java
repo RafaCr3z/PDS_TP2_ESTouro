@@ -6,6 +6,11 @@ import javax.swing.*;
  */
 public class TestaInicializacao {
     
+    /**
+     * Método principal que executa os testes de inicialização.
+     * Verifica recursos, classes e inicialização do jogo em modo headless.
+     * 
+     */
     public static void main(String[] args) {
         System.out.println("=== TESTE DE INICIALIZAÇÃO DO ESTOURO ===\n");
         
@@ -24,6 +29,7 @@ public class TestaInicializacao {
         boolean jogoOK = inicializarJogo();
         System.out.println(jogoOK ? "   ✅ Jogo inicializado com sucesso\n" : "   ❌ Erro ao inicializar jogo\n");
         
+        // Avaliar resultado geral
         if (recursosOK && classesOK && jogoOK) {
             System.out.println(">>> JOGO PRONTO PARA USAR! <<<");
             System.out.println("\nPara executar o jogo completo com interface gráfica:");
@@ -35,14 +41,20 @@ public class TestaInicializacao {
         }
     }
     
+    /**
+     * Verifica se os diretórios e arquivos de recursos necessários existem.
+     * 
+     */
     private static boolean verificarRecursos() {
         try {
+            // Verificar diretório principal de dados
             File dataDir = new File("data");
             if (!dataDir.exists()) {
                 System.out.println("   ❌ Directório 'data' não encontrado");
                 return false;
             }
             
+            // Verificar subdiretórios específicos
             File torresDir = new File("data/torres");
             File bloonsDir = new File("data/bloons");
             File niveisDir = new File("data/niveis");
@@ -52,6 +64,7 @@ public class TestaInicializacao {
                 return false;
             }
             
+            // Confirmar diretórios encontrados
             System.out.println("   ✓ data/torres encontrado");
             System.out.println("   ✓ data/bloons encontrado");
             System.out.println("   ✓ data/niveis encontrado");
@@ -63,8 +76,13 @@ public class TestaInicializacao {
         }
     }
     
+    /**
+     * Verifica se as classes principais do jogo podem ser carregadas.
+     * 
+     */
     private static boolean verificarClasses() {
         try {
+            // Tentar carregar classes principais
             Class.forName("game.EstouroJogo");
             System.out.println("   ✓ EstouroJogo");
             
@@ -87,6 +105,11 @@ public class TestaInicializacao {
         }
     }
     
+    /**
+     * Tenta inicializar o jogo em modo headless (sem interface gráfica).
+     * Cria instâncias básicas dos componentes principais.
+     * 
+     */
     private static boolean inicializarJogo() {
         try {
             // Desabilitar Swing para modo headless (sem janela)
@@ -103,7 +126,7 @@ public class TestaInicializacao {
             bloon.BloonCreator bloonCreator = new bloon.BloonCreator();
             System.out.println("   ✓ BloonCreator criado");
             
-            // Tentar criar alguns objetos
+            // Tentar criar alguns objetos de exemplo
             torre.Torre t = torreCreator.criarMacaco();
             System.out.println("   ✓ Torre Macaco criada");
             

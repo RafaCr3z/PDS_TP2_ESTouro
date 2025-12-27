@@ -25,10 +25,6 @@ public class ProjetilDefault implements Projetil {
 	 * Para criar um projétil deve-se indicar qual a sua imagem, direção, velocidade
 	 * e estrago
 	 * 
-	 * @param img      imagem do projétil
-	 * @param dirAngle direção do movimento
-	 * @param veloc    velocidade de deslocamento
-	 * @param estrago  estrago que inflige
 	 */
 	protected ProjetilDefault(ComponenteVisual img, double dirAngle, double veloc, int estrago) {
 		this.image = img;
@@ -53,8 +49,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * alterar a posição do projétil usando double para uma maior precisão
 	 * 
-	 * @param x a nova posição em x
-	 * @param y a nova posição em y
 	 */
 	protected void setPosition(double x, double y) {
 		this.x = x;
@@ -91,7 +85,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * retorna o ângulo da direção de movimento
 	 * 
-	 * @return o ângulo da direção de movimento
 	 */
 	public double getDirAngulo() {
 		return dirAngulo;
@@ -100,7 +93,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * Define o ângulo da direção de movimento
 	 * 
-	 * @param anguloDir o ângulo da direção
 	 */
 	public void setDirAngulo(double anguloDir) {
 		this.dirAngulo = anguloDir;
@@ -109,7 +101,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * Retorna a imagem do projétil
 	 * 
-	 * @return a imagem do projétil
 	 */
 	public ComponenteVisual getImagem() {
 		return image;
@@ -118,7 +109,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * Define a imagem do projétil
 	 * 
-	 * @param desenho a nova imagem
 	 */
 	public void setImage(ComponenteVisual desenho) {
 		this.image = desenho;
@@ -132,7 +122,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * Altera o estrago do projétil
 	 * 
-	 * @param estrago o novo estrago
 	 */
 	public void setEstrago(int estrago) {
 		this.estrago = estrago;
@@ -141,7 +130,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * retorna a velocidade de movimento
 	 * 
-	 * @return a velocidade de movimento
 	 */
 	public double getVelocidade() {
 		return velocidade;
@@ -150,7 +138,6 @@ public class ProjetilDefault implements Projetil {
 	/**
 	 * define a velocidadde de movimento
 	 * 
-	 * @param veloc a nova velocidade
 	 */
 	public void setVelocidade(double veloc) {
 		this.velocidade = veloc;

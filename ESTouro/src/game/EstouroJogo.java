@@ -116,9 +116,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	 * inicializa o jogo num dado ficheiro de nível, útil para testar esse nível
 	 * (ver exemplo no main ao fundo deste ficheiro)
 	 * 
-	 * @param nomeNivel ficheiro com a descrição do nível
-	 * @param dinheiro  dinheiro a dispor neste nível
-	 * @param vidas     número de vidas admitidas no nível
 	 */
 	public void play(String nomeNivel, int dinheiro, int vidas) {
 		mundo = new Mundo();
@@ -195,7 +192,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * Desenha a zona de jogo
 	 * 
-	 * @param g onde desenhar
 	 */
 	private synchronized void drawGameArea(Graphics2D g) {
 		if (mundo != null)
@@ -206,7 +202,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * ler a pista do jogo do ficheiro indicado
 	 * 
-	 * @param file ficheiro com a informação do nível
 	 */
 	private void lerRound(String file) {
 		GestorNivel gestor; // gestor temporário
@@ -262,7 +257,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * define qual o round que se vai jogar
 	 * 
-	 * @param r número do round a jogar
 	 */
 	private void setRound(int r) {
 		round = r;
@@ -277,7 +271,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * Método chamado sempre que um bloon rebenta
 	 * 
-	 * @param b bloon que rebenta
 	 */
 	public void bloonEstourou(Bloon b) {
 		setDinheiro(dinheiro + b.getValor());
@@ -286,7 +279,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * Método chamado sempre que um bloon sai do mundo
 	 * 
-	 * @param b bloon que escapa
 	 */
 	public void bloonEscapou(Bloon b) {
 		setVidas(vidas - b.getValor());
@@ -345,7 +337,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * define e actualiza o dinheiro do jogo
 	 * 
-	 * @param dinheiro nova quantidade de dinheiro
 	 */
 	private void setDinheiro(int dinheiro) {
 		this.dinheiro = dinheiro;
@@ -355,7 +346,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * define e actualiza as vidas do jogo
 	 * 
-	 * @param vidas novo número de vidas
 	 */
 	private void setVidas(int vidas) {
 		this.vidas = vidas;
@@ -413,8 +403,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * Prepara um botão de criação de uma torre
 	 * 
-	 * @param idx índice da torre na lista de torres
-	 * @param ti  informação da torre a ser criada
 	 */
 	private void criaTorre(int idx, TowerInfo ti) {
 		JCheckBox novoControlo = new JCheckBox();
@@ -454,8 +442,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 
 	/**
 	 * Classe que vai ouvir os botões de criação de torres
-	 * A cada botão vai ficar associado um índice correspondente ao local da
-	 * TorreInfo em que se encontra a informação das torres
 	 */
 	class OuveControlosTorres extends MouseAdapter implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -614,7 +600,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * This method initializes jContentPane
 	 * 
-	 * @return javax.swing.JPanel
 	 */
 	private JPanel getJContentPane() {
 		JPanel jContentPane = null;
@@ -775,7 +760,6 @@ public class EstouroJogo extends JFrame implements BloonObserver {
 	/**
 	 * Arranca com o jogo
 	 * 
-	 * @param args
 	 */
 	public static void main(String[] args) {
 		EstouroJogo estouro = new EstouroJogo();

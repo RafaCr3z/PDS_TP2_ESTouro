@@ -19,32 +19,33 @@ import torre.projetil.Projetil;
  */
 public abstract class TorreDefault implements Torre {
 
+	/** Mundo onde está a torre. */
 	private Mundo mundo; // mundo onde está a torre
+	/** Desenho da torre usando componente multi-animado. */
 	private ComponenteMultiAnimado imagem; // desenho da torre
 
+	/** Estratégia de ataque da torre (modo de ataque). */
 	private torre.estrategia.EstrategiaAtaque estrategia = new torre.estrategia.EstrategiaPrimeiro(); // modo de ataque
 																										// da torre
+	/** Raio de ataque, isto é, área circular onde consegue detetar bloons. */
 	private int raioAtaque; // raio de ataque, isto é, área circular onde consegue detetar bloons
+	/** Ponto de onde sai o disparo (relativo ao centro da torre). */
 	private Point pontoDisparo; // ponto de onde sai o disparo
 
+	/** Identifica a animação quando não está a disparar. */
 	protected static final int PAUSA_ANIM = 0; // identifica a animação quando não está a disparar
+	/** Identifica a animação de disparar. */
 	protected static final int ATAQUE_ANIM = 1; // identifica a animação de disparar
+	/** Velocidade de disparo (quantos ciclos demora entre disparos). */
 	private final int ritmoDisparo; // velocidade de disparo
+	/** Quando volta a disparar (contador de ciclos). */
 	private int proxDisparo; // quando volta a disparar
+	/** Delay desde que a animação de disparo começa até que "realmente" dispara. */
 	private final int frameDisparoDelay; // delay desde que a animação de disparo começa até que "realmente" dispara
 
 	/**
-	 * Construtor da torre. Cria uma torre dando-lhe uma imagem, um ponto de disparo
-	 * e um raio de ataque. O ponto de disparo é a coordenada de onde sai o projétil
-	 * e é dado relativamente ao ponto central da torre. O raio de ataque é o raio,
-	 * a partir do centro da torre em que esta deteta bloons
+	 * Construtor da torre.
 	 * 
-	 * @param cv           A imagem a usar para a torre
-	 * @param ritmoDisparo quantos ciclos demora entre disparos
-	 * @param delayDisparo delay da animação em que realmente ocorre o disparo
-	 * @param pontoDisparo o ponto de disparo da torre, isto é, de onde sai o
-	 *                     projétil. Coordenada relativa ao centro da torre
-	 * @param raioAtaque   distãncia dentro da qual deteta bloons
 	 */
 	public TorreDefault(ComponenteMultiAnimado cv, int ritmoDisparo, int delayDisparo, Point pontoDisparo,
 			int raioAtaque) {
@@ -56,18 +57,33 @@ public abstract class TorreDefault implements Torre {
 		this.raioAtaque = raioAtaque;
 	}
 
+	/**
+	 * Atualiza o contador do ciclo de disparo, incrementando o tempo até o próximo disparo.
+	 */
 	protected void atualizarCicloDisparo() {
 		proxDisparo++;
 	}
 
+	/**
+	 * Verifica se a torre pode disparar com base no ritmo de disparo.
+	 * 
+	 */
 	protected boolean podeDisparar() {
 		return proxDisparo >= ritmoDisparo;
 	}
 
+	/**
+	 * Reseta o contador de tempo para disparar, permitindo um novo ciclo.
+	 * 
+	 */
 	protected int resetTempoDisparar() {
 		return proxDisparo = 0;
 	}
 
+	/**
+	 * Sincroniza a animação de disparo com o ciclo de disparo, iniciando a animação de ataque se necessário.
+	 * 
+	 */
 	protected void sincronizarFrameDisparo(ComponenteMultiAnimado anim) {
 		if (proxDisparo + frameDisparoDelay >= ritmoDisparo) {
 			if (anim.getAnim() != ATAQUE_ANIM) {
@@ -77,50 +93,90 @@ public abstract class TorreDefault implements Torre {
 		}
 	}
 
+	/**
+	 * Define o componente visual da torre.
+	 * 
+	 */
 	protected void setComponente(ComponenteMultiAnimado v) {
 		imagem = v;
 	}
 
+	/**
+	 * Define o mundo onde a torre está localizada.
+	 * 
+	 */
 	@Override
 	public void setMundo(Mundo w) {
 		mundo = w;
 	}
 
+	/**
+	 * Retorna o mundo onde a torre está localizada.
+	 * 
+	 */
 	@Override
 	public Mundo getMundo() {
 		return mundo;
 	}
 
+	/**
+	 * Retorna o componente visual da torre.
+	 * 
+	 */
 	@Override
 	public ComponenteMultiAnimado getComponente() {
 		return imagem;
 	}
 
+	/**
+	 * Define a posição da torre no mundo.
+	 * 
+	 */
 	@Override
 	public void setPosicao(Point p) {
 		imagem.setPosicaoCentro(p);
 	}
 
+	/**
+	 * Retorna o ponto de disparo da torre (relativo ao centro).
+	 * 
+	 */
 	@Override
 	public Point getPontoDisparo() {
 		return pontoDisparo;
 	}
 
+	/**
+	 * Define o raio de ação da torre.
+	 * 
+	 */
 	@Override
 	public void setRaioAcao(int raio) {
 		raioAtaque = raio;
 	}
 
+	/**
+	 * Retorna o raio de ação da torre.
+	 * 
+	 */
 	@Override
 	public int getRaioAcao() {
 		return raioAtaque;
 	}
 
+	/**
+	 * Desenha a torre na tela.
+	 * 
+	 */
 	@Override
 	public void desenhar(Graphics2D g) {
 		imagem.desenhar(g);
 	}
 
+	/**
+	 * Desenha o raio de ação da torre como um círculo semi-transparente.
+	 * 
+	 */
 	@Override
 	public void desenhaRaioAcao(Graphics2D g) {
 		Point p = getComponente().getPosicaoCentro();
@@ -133,11 +189,19 @@ public abstract class TorreDefault implements Torre {
 		g.setComposite(oldComp);
 	}
 
+	/**
+	 * Define a estratégia de ataque da torre.
+	 * 
+	 */
 	@Override
 	public void setEstrategia(torre.estrategia.EstrategiaAtaque estrategia) {
 		this.estrategia = estrategia;
 	}
 
+	/**
+	 * Retorna a estratégia de ataque atual da torre.
+	 * 
+	 */
 	@Override
 	public torre.estrategia.EstrategiaAtaque getEstrategia() {
 		return estrategia;
@@ -145,20 +209,7 @@ public abstract class TorreDefault implements Torre {
 
 	/**
 	 * Template method que define o algoritmo geral de ataque das torres.
-	 * Este método implementa o padrão Template Method, definindo os passos
-	 * do algoritmo de ataque enquanto permite que as subclasses customizem
-	 * comportamentos específicos através dos métodos abstratos e protegidos.
 	 * 
-	 * Algoritmo de ataque:
-	 * 1. Atualiza o ciclo de disparo
-	 * 2. Gerencia animações de ataque
-	 * 3. Filtra alvos no alcance
-	 * 4. Escolhe alvo usando estratégia
-	 * 5. Orienta torre para o alvo
-	 * 6. Dispara se possível
-	 * 
-	 * @param bloons lista de todos os bloons no mundo
-	 * @return array de projéteis criados (vazio se não disparar)
 	 */
 	@Override
 	public Projetil[] atacar(List<Bloon> bloons) {
@@ -195,10 +246,6 @@ public abstract class TorreDefault implements Torre {
 
 	/**
 	 * Escolhe o alvo usando a estratégia de ataque.
-	 * Pode ser sobrescrito por torres que não usam estratégias normais.
-	 * 
-	 * @param alvosPossiveis lista de alvos possíveis
-	 * @return o bloon escolhido ou null
 	 */
 	protected Bloon escolherAlvo(List<Bloon> alvosPossiveis) {
 		return estrategia.escolherAlvo(this, alvosPossiveis);
@@ -208,7 +255,6 @@ public abstract class TorreDefault implements Torre {
 	 * Determina se a torre pode disparar mesmo sem alvos específicos.
 	 * Usado por torres como morteiro que disparam para áreas fixas.
 	 * 
-	 * @return true se pode disparar sem alvo específico
 	 */
 	protected boolean podeDispararSemAlvo() {
 		return false;
@@ -218,7 +264,6 @@ public abstract class TorreDefault implements Torre {
 	 * Roda a torre na direção do alvo.
 	 * Pode ser sobrescrito por torres que não rodam ou rodam de forma diferente.
 	 * 
-	 * @param alvo o bloon para o qual a torre deve se orientar
 	 */
 	protected void orientarTorre(Bloon alvo) {
 		double angle = DetectorColisoes.getAngulo(alvo.getComponente().getPosicaoCentro(),
@@ -231,8 +276,6 @@ public abstract class TorreDefault implements Torre {
 	 * Implementação padrão usa raio circular, mas pode ser sobrescrita
 	 * por torres com diferentes tipos de alcance (linha, área específica, etc).
 	 * 
-	 * @param bloons lista de todos os bloons no mundo
-	 * @return lista de bloons que estão no alcance desta torre
 	 */
 	protected List<Bloon> filtrarAlvosNoAlcance(List<Bloon> bloons) {
 		return getBloonsInRadius(bloons, getComponente().getPosicaoCentro(), getRaioAcao());
@@ -243,8 +286,6 @@ public abstract class TorreDefault implements Torre {
 	 * Deve ser implementado pelas subclasses para definir o tipo e quantidade
 	 * de projéteis específicos de cada torre.
 	 * 
-	 * @param alvo o bloon alvo dos projéteis
-	 * @return array de projéteis criados
 	 */
 	protected abstract Projetil[] criarProjeteis(Bloon alvo);
 
@@ -252,10 +293,6 @@ public abstract class TorreDefault implements Torre {
 	 * Retorna uma lista com os bloons que estejam dentro de um raio de
 	 * ação circular
 	 * 
-	 * @param bloons lista de bloons a verificar
-	 * @param center centro do raio de ação
-	 * @param radius raio de ação
-	 * @return lista de bloons que estão dentro desse raio de ação
 	 */
 	protected List<Bloon> getBloonsInRadius(List<Bloon> bloons, Point center, int radius) {
 		return bloons.stream().filter(b -> DetectorColisoes.intersectam(b.getBounds(), center, radius)).toList();
@@ -264,15 +301,15 @@ public abstract class TorreDefault implements Torre {
 	/**
 	 * Retorna uma lista com os bloons que intersetam um segmento de reta
 	 * 
-	 * @param bloons lista de bloons a verificar
-	 * @param p1     ponto de início do segemento de reta
-	 * @param p2     ponto de fim do segment de reta
-	 * @return lista de bloons que tocam nesse segmento de reta
 	 */
 	protected List<Bloon> getBloonsInLine(List<Bloon> bloons, Point p1, Point p2) {
 		return bloons.stream().filter(b -> b.getBounds().intersectsLine(p1.x, p1.y, p2.x, p2.y)).toList();
 	}
 
+	/**
+	 * Clona a torre, criando uma cópia independente com imagem clonada e mundo resetado.
+	 * 
+	 */
 	@Override
 	public Torre clone() {
 		try {

@@ -27,17 +27,21 @@ public class BloonArmadura extends BloonDecorator {
 
     @Override
     public int pop(int estrago) {
+        // Verifica se a armadura ainda está ativa
         if (armor > 0) {
+            // Subtrai o dano da armadura
             armor -= estrago;
+            // Se a armadura for quebrada (armor < 0), calcula o dano restante
             if (armor < 0) {
                 int sobra = -armor;
                 armor = 0;
                 // O dano restante passa para o bloon
                 return super.pop(sobra);
             }
-            // Dano totalmente absorvido
+            // Dano totalmente absorvido pela armadura
             return 0;
         }
+        // Sem armadura, passa o dano diretamente para o bloon
         return super.pop(estrago);
     }
 
