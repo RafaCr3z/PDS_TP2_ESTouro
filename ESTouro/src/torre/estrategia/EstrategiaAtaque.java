@@ -21,18 +21,6 @@ public interface EstrategiaAtaque {
     /**
      * Método estático para verificar o funcionamento das estratégias de ataque.
      * 
-<<<<<<< HEAD
-=======
-     * Este método serve como verificação unitária das implementações das
-     * estratégias,
-     * testando os seguintes cenários:
-     * - EstrategiaLonge: seleção do bloon mais distante fisicamente
-     * - EstrategiaForte: seleção do bloon com maior valor
-     * - Conformidade com a interface EstrategiaAtaque
-     * - Casos extremos (listas vazias, bloons únicos)
-     * 
-     * @return true se todos os testes passarem, false caso contrário
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
      */
     public static boolean verificarEstrategias() {
         System.out.println("=== Verificação das Estratégias de Ataque ===");

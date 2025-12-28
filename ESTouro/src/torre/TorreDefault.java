@@ -26,15 +26,10 @@ public abstract class TorreDefault implements Torre {
 	/** Desenho da torre usando componente multi-animado. */
 	private ComponenteMultiAnimado imagem; // desenho da torre
 
-<<<<<<< HEAD
 	/** Estratégia de ataque da torre (modo de ataque). */
 	private torre.estrategia.EstrategiaAtaque estrategia = new torre.estrategia.EstrategiaPrimeiro(); // modo de ataque
 																										// da torre
 	/** Raio de ataque, isto é, área circular onde consegue detetar bloons. */
-=======
-	private EstrategiaAtaque estrategia = new EstrategiaPrimeiro(); // modo de ataque
-																	// da torre
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
 	private int raioAtaque; // raio de ataque, isto é, área circular onde consegue detetar bloons
 	/** Ponto de onde sai o disparo (relativo ao centro da torre). */
 	private Point pontoDisparo; // ponto de onde sai o disparo

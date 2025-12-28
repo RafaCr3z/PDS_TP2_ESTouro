@@ -7,16 +7,12 @@ import bloon.BloonCreator;
  * Testa se o jogo pode ser inicializado com sucesso
  */
 public class TestaInicializacao {
-<<<<<<< HEAD
     
     /**
      * Método principal que executa os testes de inicialização.
      * Verifica recursos, classes e inicialização do jogo em modo headless.
      * 
      */
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
     public static void main(String[] args) {
         System.out.println("=== TESTE DE INICIALIZAÇÃO DO ESTOURO ===\n");
 
@@ -34,12 +30,8 @@ public class TestaInicializacao {
         System.out.println("3. Inicializando jogo em modo headless...");
         boolean jogoOK = inicializarJogo();
         System.out.println(jogoOK ? "   ✅ Jogo inicializado com sucesso\n" : "   ❌ Erro ao inicializar jogo\n");
-<<<<<<< HEAD
         
         // Avaliar resultado geral
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
         if (recursosOK && classesOK && jogoOK) {
             System.out.println(">>> JOGO PRONTO PARA USAR! <<<");
             System.out.println("\nPara executar o jogo completo com interface gráfica:");
@@ -50,15 +42,11 @@ public class TestaInicializacao {
             System.exit(1);
         }
     }
-<<<<<<< HEAD
     
     /**
      * Verifica se os diretórios e arquivos de recursos necessários existem.
      * 
      */
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
     private static boolean verificarRecursos() {
         try {
             // Verificar diretório principal de dados
@@ -67,12 +55,8 @@ public class TestaInicializacao {
                 System.out.println("   ❌ Directório 'data' não encontrado");
                 return false;
             }
-<<<<<<< HEAD
             
             // Verificar subdiretórios específicos
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
             File torresDir = new File("data/torres");
             File bloonsDir = new File("data/bloons");
             File niveisDir = new File("data/niveis");
@@ -81,12 +65,8 @@ public class TestaInicializacao {
                 System.out.println("   ❌ Subdirectórios de recursos não encontrados");
                 return false;
             }
-<<<<<<< HEAD
             
             // Confirmar diretórios encontrados
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
             System.out.println("   ✓ data/torres encontrado");
             System.out.println("   ✓ data/bloons encontrado");
             System.out.println("   ✓ data/niveis encontrado");
@@ -97,15 +77,11 @@ public class TestaInicializacao {
             return false;
         }
     }
-<<<<<<< HEAD
     
     /**
      * Verifica se as classes principais do jogo podem ser carregadas.
      * 
      */
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
     private static boolean verificarClasses() {
         try {
             // Tentar carregar classes principais
@@ -130,16 +106,12 @@ public class TestaInicializacao {
             return false;
         }
     }
-<<<<<<< HEAD
     
     /**
      * Tenta inicializar o jogo em modo headless (sem interface gráfica).
      * Cria instâncias básicas dos componentes principais.
      * 
      */
-=======
-
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
     private static boolean inicializarJogo() {
         try {
             // Desabilitar Swing para modo headless (sem janela)
@@ -155,15 +127,9 @@ public class TestaInicializacao {
 
             BloonCreator bloonCreator = new BloonCreator();
             System.out.println("   ✓ BloonCreator criado");
-<<<<<<< HEAD
             
             // Tentar criar alguns objetos de exemplo
             torre.Torre t = torreCreator.criarMacaco();
-=======
-
-            // Tentar criar alguns objetos
-            torreCreator.criarMacaco();
->>>>>>> cdb46ae3b6236264dce0df8fc26503757feda409
             System.out.println("   ✓ Torre Macaco criada");
 
             bloonCreator.criarVermelho();
