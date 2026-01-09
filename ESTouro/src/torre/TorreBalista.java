@@ -21,7 +21,7 @@ import torre.projetil.Projetil;
  */
 public class TorreBalista extends TorreDefault {
 
-	/** ponto de mira */
+	/** ponto para onde a balista faz pontaria */
 	private Point mira;
 
 	/**
@@ -102,18 +102,17 @@ public class TorreBalista extends TorreDefault {
 
 	@Override
 	protected Projetil[] criarProjeteis(Bloon alvo) {
-		// Balista dispara um dardo enorme e potente
+		// primeiro calcular o ponto de disparo
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 		Point disparo = getPontoDisparo();
-
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);
-		int py = (int) (disparo.y * cosA + disparo.x * senA);
+		int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
 		Point shoot = new Point(centro.x + px, centro.y + py);
 
-		// Criar dardo poderoso
+		// depois criar os projéteis
 		Projetil p[] = new Projetil[1];
 		ComponenteVisual img = new ComponenteSimples(ImageLoader.getLoader().getImage("data/torres/seta.gif"));
 		p[0] = new Dardo(img, angle, 10, 20);

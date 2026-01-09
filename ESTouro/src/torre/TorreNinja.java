@@ -34,7 +34,7 @@ public class TorreNinja extends TorreDefault {
         Point centro = getComponente().getPosicaoCentro();
         double angle = getComponente().getAngulo();
 
-        // ponto de disparo
+        // primeiro calcular o ponto de disparo
         Point disparo = getPontoDisparo();
         double cosA = Math.cos(angle);
         double senA = Math.sin(angle);
@@ -42,7 +42,7 @@ public class TorreNinja extends TorreDefault {
         int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
         Point shoot = new Point(centro.x + px, centro.y + py);
 
-        // criar projéteis
+        // depois criar os projéteis
         dardos = !dardos; // inverter a vez
         if (dardos) {
             Projetil p[] = new Projetil[3];
