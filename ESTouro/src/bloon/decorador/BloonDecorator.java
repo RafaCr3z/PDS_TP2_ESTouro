@@ -11,8 +11,8 @@ import mundo.Mundo;
 import prof.jogos2D.image.ComponenteVisual;
 
 /**
- * Decorador abstrato para Bloons.
- * Encaminha todas as chamadas para o bloon decorado.
+ * Decorador base para bloons
+ * Encaminha chamadas para o objeto decorado
  */
 public abstract class BloonDecorator implements Bloon {
 
@@ -20,7 +20,7 @@ public abstract class BloonDecorator implements Bloon {
     protected Bloon bloon;
 
     /**
-     * Cria um decorador para o bloon fornecido.
+     * Cria um decorador para o bloon fornecido
      */
     public BloonDecorator(Bloon bloon) {
         this.bloon = bloon;
@@ -28,7 +28,7 @@ public abstract class BloonDecorator implements Bloon {
 
     @Override
     public void desenhar(Graphics2D g) {
-        // Delega o desenho para o bloon decorado
+        // Delega para o original
         bloon.desenhar(g);
     }
 

@@ -7,7 +7,7 @@ import bloon.Bloon;
 import torre.Torre;
 
 /**
- * Estratégia de ataque que escolhe o bloon mais distante da torre.
+ * Ataca o bloon mais distante da torre.
  */
 public class EstrategiaLonge implements EstrategiaAtaque {
 
@@ -22,7 +22,7 @@ public class EstrategiaLonge implements EstrategiaAtaque {
         double maxDist = -1;
         Point pTorre = t.getComponente().getPosicaoCentro();
 
-        // Procura o bloon mais distante
+        // Encontra o bloon com maior distância
         for (Bloon b : alvos) {
             double dist = pTorre.distanceSq(b.getComponente().getPosicaoCentro());
             if (dist > maxDist) {
@@ -35,7 +35,6 @@ public class EstrategiaLonge implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
-        // Retorna o nome da estratégia
         return "Longe";
     }
 

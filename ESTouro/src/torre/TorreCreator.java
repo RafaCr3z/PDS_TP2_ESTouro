@@ -13,6 +13,9 @@ public class TorreCreator {
 	private java.util.Map<String, java.util.function.Supplier<Torre>> fabrica = new java.util.HashMap<>();
 	private ImageLoader loader = ImageLoader.getLoader();
 
+	/**
+	 * Constrói uma torre creator
+	 */
 	public TorreCreator() {
 		fabrica.put(TorreConstantes.MACACO, this::criarMacaco);
 		fabrica.put(TorreConstantes.OCTO, this::criarOctogonal);
@@ -26,6 +29,8 @@ public class TorreCreator {
 	/**
 	 * cria a torre com um dado nome
 	 * 
+	 * @param nome nome da torre a criar
+	 * @return a torre criada, ou null se não existir torre com o nome dado
 	 */
 	public Torre criarTorrePorNome(String nome) {
 		if (fabrica.containsKey(nome))
@@ -33,16 +38,19 @@ public class TorreCreator {
 		return null;
 	}
 
-	/** Cria uma torre sniper */
+	/**
+	 * cria a torre sniper
+	 * 
+	 * @return a torre sniper
+	 */
 	public Torre criarSniper() {
-		// Reusing macaco image if sniper image doesn't exist, but attempting sniper
-		// path
 		java.awt.Image img = loader.getImage("data/torres/sniper/imagem.gif");
 		if (img == null)
 			img = loader.getImage("data/torres/macaco/imagem.gif");
 		return new TorreSniper((BufferedImage) img);
 	}
 
+	/** Cria uma torre octogonal */
 	public Torre criarOctogonal() {
 		java.awt.Image img = loader.getImage("data/torres/octo/imagem.gif");
 		return new TorreOctogonal((BufferedImage) img);

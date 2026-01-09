@@ -12,8 +12,11 @@ public class ManipuladorCreator {
 	/**
 	 * cria um manipulador para a torre indicada
 	 * 
+	 * @param t a torre para a qual se pretende um manipulador
+	 * @return o manipulador adequado à torre
 	 */
 	public static ManipuladorTorre criarManipulador(Torre t) {
+		// cria um visitor para criar manipuladores
 		ManipuladorCreationVisitor v = new ManipuladorCreationVisitor();
 		t.accept(v);
 		return v.getManipulador();

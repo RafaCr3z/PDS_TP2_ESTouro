@@ -16,39 +16,35 @@ import torre.estrategia.EstrategiaAtaque;
  */
 public interface Torre extends Cloneable {
 
-	/**
-	 * Define a estratégia de ataque da torre.
-	 * 
-	 */
 	public void setEstrategia(EstrategiaAtaque estrategia);
 
-	/**
-	 * Devolve a estratégia de ataque da torre.
-	 * 
-	 */
 	public EstrategiaAtaque getEstrategia();
 
 	/**
 	 * Define a posição no écran da torre
 	 * 
+	 * @param p a nova posição
 	 */
 	public void setPosicao(Point p);
 
 	/**
 	 * Define o mundo onde a torre está
 	 * 
+	 * @param m o mundo
 	 */
 	public void setMundo(Mundo m);
 
 	/**
 	 * Retorna o mundo onde está a torre
 	 * 
+	 * @return o mundo onde está a torre
 	 */
 	public Mundo getMundo();
 
 	/**
 	 * devolve qual o componente visual da torre
 	 * 
+	 * @return o componente visual da torre
 	 */
 	public ComponenteMultiAnimado getComponente();
 
@@ -56,6 +52,8 @@ public interface Torre extends Cloneable {
 	 * faz uma jogada de ataque aos bloons. O resultado de cada ataque é uma série
 	 * de projéteis
 	 * 
+	 * @param bloons lista de bloons a atacar
+	 * @return os projéteis lançados pela torre
 	 */
 	public Projetil[] atacar(List<Bloon> bloons);
 
@@ -64,6 +62,7 @@ public interface Torre extends Cloneable {
 	 * é a distância máxima a que a torre consegue visualizar
 	 * os inimigos
 	 * 
+	 * @param raio o novo raio de accao
 	 */
 	public void setRaioAcao(int raio);
 
@@ -72,6 +71,7 @@ public interface Torre extends Cloneable {
 	 * é a distância máxima a que a torre consegue visualizar
 	 * os inimigos
 	 * 
+	 * @return o raio de ação da torre
 	 */
 	public int getRaioAcao();
 
@@ -84,18 +84,21 @@ public interface Torre extends Cloneable {
 	/**
 	 * desenha a torre
 	 * 
+	 * @param g ambiente onde desenhar a torre
 	 */
 	public void desenhar(Graphics2D g);
 
 	/**
 	 * Desenha o alcance da torre
 	 * 
+	 * @param g sistema gráfico onde desenhar
 	 */
 	public void desenhaRaioAcao(Graphics2D g);
 
 	/**
 	 * Cria um clone desta torre
 	 * 
+	 * @return uma torre igual à original
 	 */
 	public Torre clone();
 

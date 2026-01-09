@@ -21,12 +21,13 @@ import torre.projetil.Projetil;
  */
 public class TorreBalista extends TorreDefault {
 
-	/** ponto para onde a balista faz pontaria */
+	/** ponto de mira */
 	private Point mira;
 
 	/**
 	 * Cria uma balista.
 	 * 
+	 * @param img imagem da balista
 	 */
 	public TorreBalista(BufferedImage img) {
 		super(new ComponenteMultiAnimado(new Point(), img, 2, 4, 2),
@@ -37,6 +38,7 @@ public class TorreBalista extends TorreDefault {
 	/**
 	 * Define o ângulo de disparo da balista
 	 * 
+	 * @param angulo o novo ângulo
 	 */
 	public void setAnguloDisparo(float angulo) {
 		getComponente().setAngulo(angulo);
@@ -46,6 +48,7 @@ public class TorreBalista extends TorreDefault {
 	/**
 	 * Define a pontaria, isto é, a posição para onde a balusta irá apontar
 	 * 
+	 * @param angulo angulo do disparo, para poder calcular a área de ataque
 	 */
 	private void definirMira(double angulo) {
 		double cos = Math.cos(angulo);
@@ -57,6 +60,7 @@ public class TorreBalista extends TorreDefault {
 	/**
 	 * Retorna o ponto para onde a balista irá disparar
 	 * 
+	 * @return o ponto para onde a balista irá disparar
 	 */
 	public Point getMira() {
 		return mira;
@@ -98,10 +102,11 @@ public class TorreBalista extends TorreDefault {
 
 	@Override
 	protected Projetil[] criarProjeteis(Bloon alvo) {
+		// Balista dispara um dardo enorme e potente
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 		Point disparo = getPontoDisparo();
-		
+
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);

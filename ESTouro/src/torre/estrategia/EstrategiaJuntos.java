@@ -13,19 +13,18 @@ public class EstrategiaJuntos implements EstrategiaAtaque {
         if (bloons.isEmpty())
             return null;
 
-        // Agrupa por posição (divisão inteira por 20 para criar "zonas")
-        // Como feito no TorreMacaco original
+        // Agrupa bloons por zonas do caminho (divisão por 20)
         Map<Integer, List<Bloon>> posicoes = bloons.stream()
                 .collect(Collectors.groupingBy(b -> b.getPosicaoNoCaminho() / 20));
 
         if (posicoes.isEmpty())
             return null;
 
-        // Encontra a zona com mais bloons
+        // Escolhe a zona mais populosa
         int posicaoComMais = Collections.max(posicoes.keySet(),
                 (k1, k2) -> Integer.compare(posicoes.get(k1).size(), posicoes.get(k2).size()));
 
-        // Retorna o primeiro bloon dessa zona
+        // Retorna o primeiro dessa zona
         List<Bloon> zona = posicoes.get(posicaoComMais);
         return zona != null && !zona.isEmpty() ? zona.get(0) : null;
     }

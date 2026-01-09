@@ -25,7 +25,7 @@ public interface EstrategiaAtaque {
     public static boolean verificarEstrategias() {
         System.out.println("=== Verificação das Estratégias de Ataque ===");
 
-        // Teste 1: Verificar se as estratégias implementam a interface corretamente
+        //Verificar se as estratégias implementam a interface corretamente
         EstrategiaLonge longe = new EstrategiaLonge();
         EstrategiaForte forte = new EstrategiaForte();
 
@@ -34,14 +34,14 @@ public interface EstrategiaAtaque {
                 "Longe".equals(longe.getNome()) &&
                 "Forte".equals(forte.getNome());
 
-        System.out.println("✓ Conformidade com interface: " + (interfaceOk ? "PASS" : "FAIL"));
+        System.out.println(" Conformidade com interface: " + (interfaceOk ? "PASS" : "FAIL"));
 
-        // Teste 2: Verificar comportamento com listas vazias
+        //Verificar comportamento com listas vazias
         java.util.List<Bloon> listaVazia = new java.util.ArrayList<>();
         boolean vaziaOk = (longe.escolherAlvo(null, listaVazia) == null) &&
                 (forte.escolherAlvo(null, listaVazia) == null);
 
-        System.out.println("✓ Listas vazias: " + (vaziaOk ? "PASS" : "FAIL"));
+        System.out.println(" Listas vazias: " + (vaziaOk ? "PASS" : "FAIL"));
 
         System.out.println("=== Verificação Concluída ===");
         System.out.println("Resultado: "

@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "ESTouro/src"
+    ],
+    "java.project.outputPath": "ESTouro/bin",
+    "java.project.referencedLibraries": [
+        "ESTouro/lib/**/*.jar"
+    ]
+}

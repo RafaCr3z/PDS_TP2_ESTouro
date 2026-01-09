@@ -7,8 +7,7 @@ import java.awt.Rectangle;
 import bloon.Bloon;
 
 /**
- * Decorador que adiciona um escudo ao bloon.
- * O escudo absorve dano explosivo até quebrar.
+ * Adiciona um escudo que absorve dano explosivo
  */
 public class BloonEscudo extends BloonDecorator {
 
@@ -17,9 +16,6 @@ public class BloonEscudo extends BloonDecorator {
 
     /**
      * Cria um bloon com escudo
-     * 
-     * @param bloon  o bloon a decorar
-     * @param shield a quantidade de dano explosivo que o escudo suporta
      */
     public BloonEscudo(Bloon bloon, int shield) {
         super(bloon);
@@ -28,11 +24,10 @@ public class BloonEscudo extends BloonDecorator {
 
     @Override
     public void explode(int estrago) {
-        // Verifica se o escudo ainda está ativo
+        // Se tem escudo, absorve explosão
         if (shield > 0) {
-            // Subtrai o dano explosivo do escudo
             shield -= estrago;
-            // Se o escudo for quebrado (shield < 0), calcula o dano restante
+            // Se quebrou, passa o resto
             if (shield < 0) {
                 int sobra = -shield;
                 shield = 0;

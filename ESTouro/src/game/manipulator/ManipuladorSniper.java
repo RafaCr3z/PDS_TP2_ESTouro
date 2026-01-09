@@ -20,17 +20,12 @@ public class ManipuladorSniper extends ManipuladorVazio {
 	// composite para usar transparências nas miras
 	private static final AlphaComposite transp = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f);
 
-	/**
-	 * Construtor para o manipulador do sniper.
-	 * 
-	 */
 	public ManipuladorSniper(Torre t) {
 		super(t);
 	}
 
 	@Override
 	public void mouseDragged(Point p) {
-		// Ao arrastar o rato, a torre roda para apontar naquela direção
 		double angulo = DetectorColisoes.getAngulo(getTorre().getComponente().getPosicaoCentro(), p);
 		getTorre().getComponente().setAngulo((float) angulo);
 	}

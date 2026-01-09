@@ -31,8 +31,9 @@ public class GameWriter {
 
 			List<Torre> torres = m.getTorres();
 			out.println(torres.size());
-
+			// guardar as torres
 			GameWriterVisitor v = new GameWriterVisitor(out);
+			// percorrer a lista de torres e guardar cada uma
 			for (Torre t : torres) {
 				t.accept(v);
 			}

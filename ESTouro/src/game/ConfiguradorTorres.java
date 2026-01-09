@@ -22,7 +22,7 @@ public class ConfiguradorTorres extends JPanel {
 
 	// botões usados para escolher o modo de ataque
 	private ButtonGroup btGrp = new ButtonGroup();
-
+	
 	// torre que está a ser controlada por este painel
 	private Torre escolhida;
 
@@ -33,6 +33,7 @@ public class ConfiguradorTorres extends JPanel {
 	 * Cria os vários botões para os vários modos de ataque
 	 */
 	private void criarBotoesAtaques(JPanel painelAtaques) {
+		// cria os botões para os modos de ataque
 		painelAtaques.add(criarBotaoAtaque(new EstrategiaPrimeiro()));
 		painelAtaques.add(criarBotaoAtaque(new EstrategiaUltimo()));
 		painelAtaques.add(criarBotaoAtaque(new EstrategiaPerto()));
@@ -45,6 +46,7 @@ public class ConfiguradorTorres extends JPanel {
 	 * método utilizado para definir qual a torre escolhida, ou seja, qual a que
 	 * está a ser modificada
 	 * 
+	 * @param t a torre a ser modificada
 	 */
 	public void setSelecionada(Torre t) {
 		escolhida = t;
@@ -59,6 +61,9 @@ public class ConfiguradorTorres extends JPanel {
 	/**
 	 * Cria um botão para um modo de ataque
 	 * 
+	 * @param texto      o texto a colocar no botão
+	 * @param modoAtaque o modo de ataque
+	 * @return o botão criado
 	 */
 	private JToggleButton criarBotaoAtaque(EstrategiaAtaque est) {
 		JToggleButton button = new JToggleButton(est.getNome());

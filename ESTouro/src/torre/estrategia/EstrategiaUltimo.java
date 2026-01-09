@@ -5,7 +5,7 @@ import bloon.Bloon;
 import torre.Torre;
 
 /**
- * Estratégia de ataque que escolhe o bloon menos avançado no caminho (último).
+ * Ataca o bloon mais atrás no caminho.
  */
 public class EstrategiaUltimo implements EstrategiaAtaque {
     @Override
@@ -13,7 +13,7 @@ public class EstrategiaUltimo implements EstrategiaAtaque {
         // Se não há bloons, retorna null
         if (bloons.isEmpty())
             return null;
-        // Escolhe o bloon com menor posição no caminho (mais atrás)
+        // Escolhe o bloon com menor avanço no caminho
         return bloons.stream()
                 .min((b1, b2) -> Integer.compare(b1.getPosicaoNoCaminho(), b2.getPosicaoNoCaminho()))
                 .orElse(null);
@@ -21,7 +21,6 @@ public class EstrategiaUltimo implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
-        // Retorna o nome da estratégia
         return "Último";
     }
 }

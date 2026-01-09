@@ -13,7 +13,8 @@ import torre.projetil.Dardo;
 import torre.projetil.Projetil;
 
 /**
- * Classe que representa a torre ninja.
+ * Classe que representa a torre ninja. Esta torre dispara alternadamente 3
+ * dardos ou 1 granada para os bloons de acordo com o seu modo de ataque.
  */
 public class TorreNinja extends TorreDefault {
 
@@ -22,6 +23,7 @@ public class TorreNinja extends TorreDefault {
     /**
      * Cria uma torre ninja
      * 
+     * @param img a imagem da torre
      */
     public TorreNinja(BufferedImage img) {
         super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 3), 30, 8, new Point(20, 0), 100);
@@ -32,7 +34,7 @@ public class TorreNinja extends TorreDefault {
         Point centro = getComponente().getPosicaoCentro();
         double angle = getComponente().getAngulo();
 
-        // primeiro calcular o ponto de disparo
+        // ponto de disparo
         Point disparo = getPontoDisparo();
         double cosA = Math.cos(angle);
         double senA = Math.sin(angle);
@@ -40,7 +42,7 @@ public class TorreNinja extends TorreDefault {
         int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
         Point shoot = new Point(centro.x + px, centro.y + py);
 
-        // depois criar os projéteis
+        // criar projéteis
         dardos = !dardos; // inverter a vez
         if (dardos) {
             Projetil p[] = new Projetil[3];

@@ -24,6 +24,10 @@ public class InfoPanel extends JPanel {
 	/**
 	 * Define qual a informação que aparece no painel de informações
 	 * 
+	 * @param nome        nome da torre
+	 * @param preco       preco da torre
+	 * @param desc        descrição da torre
+	 * @param temDinheiro indica se o jogador tem dinheiro para comprar a torre
 	 */
 	public void setInfo(String nome, int preco, String desc, boolean temDinheiro) {
 		nomeLBL.setText(nome);

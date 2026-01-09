@@ -13,10 +13,8 @@ import prof.jogos2D.image.ComponenteVisual;
 public class BloonFabricante extends BloonSimples {
     // a lista de bloons prováveis de serem criados
     private List<Bloon> provaveis = new ArrayList<>();
-    // Ritmo de criação: de quantos em quantos ciclos cria um novo bloon
-    private int ritmoCriacao;
-    // Contador para o próximo ciclo de criação
-    private int proximaCriacao;
+    private int ritmoCriacao; // ritmo de criação
+    private int proximaCriacao; // próximo ciclo de criação
 
     /**
      * Cria um bloon que fabrica outros bloons
@@ -36,57 +34,48 @@ public class BloonFabricante extends BloonSimples {
     }
 
     /**
-     * Adiciona um bloon à lista dos bloons prováveis
+     * Adiciona um bloon à lista de prováveis.
      * 
-     * @param b o bloon a poder ser criado
+     * @param b bloon a adicionar
      */
     public void addBloonProvavel(Bloon b) {
-        // Adiciona o bloon à lista de possíveis para criação
         provaveis.add(b);
     }
 
     @Override
     public void mover() {
-        // Move o bloon fabricante como um bloon simples
         super.mover();
         // se por acaso já saiu não faz nada
         if (getResistencia() <= 0)
             return;
-        // Decrementa o contador para a próxima criação
         proximaCriacao--;
-        // Se chegou o momento de criar um novo bloon
         if (proximaCriacao <= 0) {
             // decidir aleatoriamente qual o bloon a "disparar"
             int idx = ThreadLocalRandom.current().nextInt(provaveis.size());
             // colocar o bloon um pouco à frente deste
             int pathOffset = 3;
             int pos = getPosicaoNoCaminho();
-            // Verifica se a posição à frente existe, senão coloca na mesma posição
             if (getCaminho().getPoint(pos + pathOffset) == null)
                 pathOffset = 0;
 
-            // usar um clone do bloon escolhido para evitar reutilização
+            // usa clone para evitar problemas de referência
             Bloon escolhido = provaveis.get(idx).clone();
-            // Configura o caminho e mundo para o novo bloon
             escolhido.setCaminho(getCaminho());
             getMundo().addBloonPendente(escolhido);
             escolhido.setPosicaoNoCaminho(pos + pathOffset);
-            // Adiciona os observadores do fabricante ao novo bloon
             getObservers().forEach(o -> escolhido.addBloonObserver(o));
-            // Reseta o contador para o próximo ciclo
             proximaCriacao = ritmoCriacao;
         }
     }
 
     @Override
     public Bloon clone() {
-        // Clonar a imagem e o pop para garantir independência visual
+        // Clona garantindo independência da lista de prováveis
         BloonFabricante clone = new BloonFabricante(getComponente().clone(), getPopComponente().clone(),
                 getVelocidade(), getResistencia(), getValor(), ritmoCriacao);
 
-        // Copiar a lista de prováveis
         for (Bloon b : provaveis) {
-            clone.addBloonProvavel(b.clone()); // Clonar os modelos para o novo fabricante
+            clone.addBloonProvavel(b.clone());
         }
 
         return clone;

@@ -27,6 +27,11 @@ public class BombaImpacto extends ProjetilDefault {
 	/**
 	 * Cria a bomba.
 	 * 
+	 * @param img     imagem da bomba
+	 * @param dir     direção de deslocamento
+	 * @param veloc   velocidade de deslocamento
+	 * @param estrago quantidade de estrago que provoca nos bloons
+	 * @param m       mundo onde se movimenta
 	 */
 	public BombaImpacto(ComponenteVisual img, double dir, double veloc, int estrago, Mundo m) {
 		super(img, dir, veloc, estrago);
@@ -44,8 +49,6 @@ public class BombaImpacto extends ProjetilDefault {
 		// para cada bloon vai verificar se lhe bateu
 		for (Bloon b : bloons) {
 			if (b.getBounds().intersects(getComponente().getBounds())) {
-				// a bomba explode e tira 2 a cada balão nas redondezas
-
 				Point explosionCenter = getComponente().getPosicaoCentro();
 				bloons.stream()
 						.filter(be -> DetectorColisoes.intersectam(be.getBounds(), explosionCenter, raioExplosao))

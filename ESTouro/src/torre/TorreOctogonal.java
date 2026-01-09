@@ -9,7 +9,9 @@ import torre.projetil.Dardo;
 import torre.projetil.Projetil;
 
 /**
- * Classe que representa a torre octogonal
+ * Classe que representa a torre octogonal. Esta torre dispara 8 dardos, um em
+ * cada direção dos seus lançadores. Só dispara quando tem bloons dentro do seu
+ * raio de ação.
  */
 public class TorreOctogonal extends TorreDefault {
 
@@ -28,21 +30,22 @@ public class TorreOctogonal extends TorreDefault {
 
 	@Override
 	protected Projetil[] criarProjeteis(Bloon alvo) {
+		// primeiro calcular o ponto de disparo
 		Point centro = getComponente().getPosicaoCentro();
 		Point disparo = getPontoDisparo();
-		double angle = 0; // ângulo não importa para cálculo do ponto de disparo
-		
+		// ver o ângulo que o alvo faz com a torre, para assim rodar esta torre
+		double angle = 0; // neste caso o ângulo não interessa pois são 8
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);
-		int py = (int) (disparo.y * cosA + disparo.x * senA);
+		int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
 		Point shoot = new Point(centro.x + px, centro.y + py);
 
-		// Criar os 8 dardos em direções diferentes
+		// depois criar os projéteis
+		// disparar os 8 dardos
 		Projetil p[] = new Projetil[8];
 		double angulo = baseAngle + Math.PI / 2;
 		double incAng = Math.PI / 4;
-		
 		for (int i = 0; i < 8; i++) {
 			ComponenteVisual img = new ComponenteAnimado(new Point(),
 					(BufferedImage) ImageLoader.getLoader().getImage("data/torres/dardo.gif"), 2, 2);
@@ -57,6 +60,7 @@ public class TorreOctogonal extends TorreDefault {
 	/**
 	 * Altera o ângulo da octo
 	 * 
+	 * @param angle o novo ângulo
 	 */
 	public void setAngle(double angle) {
 		getComponente().setAngulo(angle);

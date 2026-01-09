@@ -16,12 +16,11 @@ import torre.projetil.Dardo;
 import torre.projetil.Projetil;
 
 /**
- * Torre Sniper: Alcance infinito, dano imediato (5), escolha de alvo por
- * estratégia.
+ * Torre Sniper: Alcance infinito e dano imediato.
  */
 public class TorreSniper extends TorreDefault {
 
-    private static final int ALCANCE_MAX = 2000; // Alcance prático "infinito"
+    private static final int ALCANCE_MAX = 2000;
     private static final int DANO = 5;
     private static final int RITMO_DISPARO = 40;
     private static final int DELAY_ANIMACAO = 2;
@@ -29,7 +28,6 @@ public class TorreSniper extends TorreDefault {
     private static final int DANO_PROJETIL = 2;
 
     public TorreSniper(BufferedImage img) {
-        // Ajustar parâmetros conforme desejado (ritmo, delay, pivot)
         super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 2),
                 RITMO_DISPARO, DELAY_ANIMACAO, new Point(20, 0), ALCANCE_MAX);
     }
@@ -43,7 +41,6 @@ public class TorreSniper extends TorreDefault {
             anim.setAnim(PAUSA_ANIM);
         }
 
-        // Obter bloons na linha de visão
         Point centro = getComponente().getPosicaoCentro();
         double angle = getComponente().getAngulo();
         Point fim = new Point(
@@ -69,7 +66,6 @@ public class TorreSniper extends TorreDefault {
 
     @Override
     protected Projetil[] criarProjeteis(Bloon alvo) {
-        // Não usado diretamente pelo atacar sobrescrito, mas pode ser útil
         return criarProjetilPos(alvo.getComponente().getPosicaoCentro(), getComponente().getAngulo());
     }
 
@@ -78,7 +74,7 @@ public class TorreSniper extends TorreDefault {
         ComponenteVisual img = new ComponenteAnimado(new Point(),
                 (BufferedImage) ImageLoader.getLoader().getImage("data/torres/dardo.gif"), 2, 2);
         // Dardo normal após impacto
-        p[0] = new Dardo(img, angle, VELOCIDADE_PROJETIL, DANO_PROJETIL); // Velocidade 10, Dano 2 (dardo normal)
+        p[0] = new Dardo(img, angle, VELOCIDADE_PROJETIL, DANO_PROJETIL);
         p[0].setPosicao(pos);
         p[0].setAlcance(ALCANCE_MAX);
         return p;
@@ -86,7 +82,6 @@ public class TorreSniper extends TorreDefault {
 
     @Override
     public void desenhaRaioAcao(Graphics2D g) {
-        // Desenhar a linha de tido
         Point centro = getComponente().getPosicaoCentro();
         double angle = getComponente().getAngulo();
         Point fim = new Point(

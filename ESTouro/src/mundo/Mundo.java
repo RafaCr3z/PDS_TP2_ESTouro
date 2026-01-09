@@ -66,6 +66,7 @@ public class Mundo {
 	/**
 	 * desenha o mundo e os seus constituintes
 	 * 
+	 * @param g o ambiente gráfico onde se vai desenhar
 	 */
 	public void draw(Graphics2D g) {
 		if (backGround != null)
@@ -82,6 +83,7 @@ public class Mundo {
 	/**
 	 * define a imagem de fundo do mundo
 	 * 
+	 * @param fundo a imagem de fundo do mundo
 	 */
 	public void setFundo(ComponenteVisual fundo) {
 		this.backGround = fundo;
@@ -90,6 +92,7 @@ public class Mundo {
 	/**
 	 * adiciona um bloon ao mundo
 	 * 
+	 * @param b bloon a colocar no mundo
 	 */
 	public void addBloon(Bloon b) {
 		b.setMundo(this); // associar o bloon ao mundo
@@ -99,6 +102,7 @@ public class Mundo {
 	/**
 	 * remove um bloon do mundo
 	 * 
+	 * @param b bloon a remover
 	 */
 	public void removeBloon(Bloon b) {
 		b.setCaminho(null); // retira a informação do caminho
@@ -109,14 +113,19 @@ public class Mundo {
 	/**
 	 * indica quantos bloons tem o mundo
 	 * 
+	 * @return o número de bloons presentes no mundo
 	 */
 	public int getNumeroBloons() {
 		return bloons.size() + bloonsPendentes.size();
 	}
 
 	/**
-	 * Adiciona um bloon à lista dos pendentes.
+	 * Adiciona um bloon à lista dos pendentes. Quando um bloon dá origem a outros é
+	 * este o método que se deve utilizar para adicionar o bloon ao mundo. Isto
+	 * evita que bloons criados devido ao rebentamento de outro sejam logo
+	 * processados no mesmo ciclo de processamento
 	 * 
+	 * @param b o bloon a adicionar
 	 */
 	public void addBloonPendente(Bloon b) {
 		bloonsPendentes.add(b);
@@ -125,6 +134,7 @@ public class Mundo {
 	/**
 	 * adiciona uma torre ao mundo
 	 * 
+	 * @param t a torre a adicionar
 	 */
 	public void addTower(Torre t) {
 		torres.add(t);
@@ -134,6 +144,7 @@ public class Mundo {
 	/**
 	 * remove uma torre do mundo
 	 * 
+	 * @param t a torre a remover
 	 */
 	public void removeTower(Torre t) {
 		torres.remove(t);
@@ -142,6 +153,8 @@ public class Mundo {
 	/**
 	 * Retorna a torre que está numa dada posição do écran.
 	 * 
+	 * @param pt posição do écran a verificar
+	 * @return a torre que está nessa posição, ou null caso não exista nenhuma
 	 */
 	public Torre getTowerAt(Point pt) {
 		return torres.stream().filter(t -> t.getComponente().getBounds().contains(pt)).findFirst().orElse(null);
@@ -150,6 +163,7 @@ public class Mundo {
 	/**
 	 * adiciona um projétil ao mundo
 	 * 
+	 * @param p o projétil a adicionar
 	 */
 	public void addProjetil(Projetil p) {
 		projeteis.add(p);
@@ -158,6 +172,7 @@ public class Mundo {
 	/**
 	 * remove um projétil do mundo
 	 * 
+	 * @param p o projétil a remover
 	 */
 	public void removeProjetil(Projetil p) {
 		projeteis.remove(p);
@@ -166,6 +181,7 @@ public class Mundo {
 	/**
 	 * Adiciona um efeito especial ao mundo
 	 * 
+	 * @param fx o efeito a adicionar
 	 */
 	public void addFx(ComponenteVisual fx) {
 		fxs.add(fx);
@@ -174,6 +190,7 @@ public class Mundo {
 	/**
 	 * Remove um efeito especial ao mundo
 	 * 
+	 * @param fx o efeito a remover
 	 */
 	public void removeFx(ComponenteVisual fx) {
 		fxs.remove(fx);

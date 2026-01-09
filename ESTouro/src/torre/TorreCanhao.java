@@ -25,7 +25,7 @@ public class TorreCanhao extends TorreDefault {
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 
-		// primeiro calcular o ponto de disparo
+		// ponto de disparo
 		Point disparo = getPontoDisparo();
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
@@ -33,7 +33,7 @@ public class TorreCanhao extends TorreDefault {
 		int py = (int) (disparo.y * cosA + disparo.x * senA); // repor o tempo de disparo
 		Point shoot = new Point(centro.x + px, centro.y + py);
 
-		// depois criar os projéteis
+		// criar projétil
 		Projetil p[] = new Projetil[1];
 		ComponenteVisual img = new ComponenteSimples(ImageLoader.getLoader().getImage("data/torres/bomba.gif"));
 		p[0] = new BombaImpacto(img, angle, 12, 2, getMundo());

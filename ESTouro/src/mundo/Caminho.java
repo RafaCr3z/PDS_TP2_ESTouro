@@ -18,6 +18,7 @@ public class Caminho {
 
 	/**
 	 * Lista com todos os pontos do caminho
+	 * isto é um bocado força bruta... mas funciona...
 	 */
 	private List<Point> pontos = new ArrayList<>();
 	private List<Point> ancoras = new ArrayList<>();
@@ -26,8 +27,12 @@ public class Caminho {
 	}
 
 	/**
-	 * pemite adicionar um novo segmento de recta ao caminho.
+	 * pemite adicionar um novo segmento de recta ao caminho. Os pontos intermédios
+	 * são adicionados automaticamente ao caminho. Assume que o segmento de recta
+	 * começa no último ponto conhecido do caminho
 	 * 
+	 * @param p o ponto onde termina o segmento de recta. O início do segmento de
+	 *          reta assume-se que seja o ponto anterior.
 	 */
 	public void addSegment(Point p) {
 		ancoras.add(p);
@@ -88,6 +93,7 @@ public class Caminho {
 	/**
 	 * devolve o ponto (coordenada do écran) de início do caminho
 	 * 
+	 * @return a coordenada (pixeis) onde começa o caminho
 	 */
 	public Point getInicio() {
 		return pontos.getFirst();
@@ -96,6 +102,7 @@ public class Caminho {
 	/**
 	 * devolve o ponto (coordenada do écran) de término do caminho
 	 * 
+	 * @return a coordenada (pixeis) onde termina o caminho
 	 */
 	public Point getFim() {
 		return pontos.getLast();
@@ -105,6 +112,9 @@ public class Caminho {
 	 * devolve a cooredenada do ponto i do caminho, ou seja, onde se situa o ponto i
 	 * no écran
 	 * 
+	 * @param i o índice do ponto no caminho
+	 * @return a coordenada do iº ponto do caminho, null se o ponto não fizer parte
+	 *         do caminho
 	 */
 	public Point getPoint(int i) {
 		return i < pontos.size() ? pontos.get(i) : null;
@@ -113,6 +123,9 @@ public class Caminho {
 	/**
 	 * devolve qual o próximo ponto no caminho a seguir a outro ponto
 	 * 
+	 * @param p     o ponto onde se está
+	 * @param veloc a velocidade de movimento
+	 * @return o ponto onde se vai estar, ou null caso não exista esse ponto
 	 */
 	public Point getProximo(Point p, int veloc) {
 		int idx = pontos.indexOf(p);
@@ -126,6 +139,8 @@ public class Caminho {
 	/**
 	 * devolve uma âncora do caminho
 	 * 
+	 * @param idx indice da âncora a retornar
+	 * @return âncora existente no índice idx
 	 */
 	public Point getAncora(int idx) {
 		return ancoras.get(idx);
@@ -144,6 +159,8 @@ public class Caminho {
 	/**
 	 * altera uma âncora
 	 * 
+	 * @param idx o índice da âncora a alterar
+	 * @param p   o novo ponto da âncora
 	 */
 	public void setAnchor(int idx, Point p) {
 		ancoras.set(idx, p);
@@ -157,6 +174,8 @@ public class Caminho {
 	/**
 	 * insere uma âncora no caminho
 	 * 
+	 * @param idx índice onde inserir a âncora
+	 * @param p   âncora a inserir
 	 */
 	public void insertAchor(int idx, Point p) {
 		ancoras.add(idx, p);

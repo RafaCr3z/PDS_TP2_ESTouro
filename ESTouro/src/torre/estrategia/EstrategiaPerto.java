@@ -6,7 +6,7 @@ import bloon.Bloon;
 import torre.Torre;
 
 /**
- * Estratégia de ataque que escolhe o bloon mais próximo da torre.
+ * Ataca o bloon mais perto da torre.
  */
 public class EstrategiaPerto implements EstrategiaAtaque {
     @Override
@@ -15,7 +15,7 @@ public class EstrategiaPerto implements EstrategiaAtaque {
         if (bloons.isEmpty())
             return null;
         Point centro = t.getComponente().getPosicaoCentro();
-        // Escolhe o bloon fisicamente mais perto da torre
+        // Escolhe o bloon com menor distância à torre
         return bloons.stream()
                 .min((b1, b2) -> Double.compare(
                         b1.getComponente().getPosicaoCentro().distance(centro),
@@ -25,7 +25,6 @@ public class EstrategiaPerto implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
-        // Retorna o nome da estratégia
         return "Perto";
     }
 }

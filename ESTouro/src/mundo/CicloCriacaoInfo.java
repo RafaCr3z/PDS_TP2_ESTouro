@@ -2,6 +2,9 @@ package mundo;
 
 /**
  * Classe que guarda a informação sobre um ciclo de criação de bloons.
+ * Um ciclo de criação indica em que ciclo do jogo é para ser criado um bloon, a
+ * que caminho deve ser adicionado e qual o nome do bloon a criar.
+ * Esta classe é imutável.
  */
 public final class CicloCriacaoInfo {
 
@@ -12,6 +15,10 @@ public final class CicloCriacaoInfo {
 	/**
 	 * Constroi um ciclo de criação
 	 * 
+	 * @param quando        altura (em ciclos de processamento) em que deve ser
+	 *                      criado o bloon
+	 * @param indiceCaminho em que caminho deve ser criado o bloon
+	 * @param nomeBloon     o nome do bloon a criar
 	 */
 	public CicloCriacaoInfo(int quando, int indiceCaminho, String nomeBloon) {
 		this.ciclo = quando;

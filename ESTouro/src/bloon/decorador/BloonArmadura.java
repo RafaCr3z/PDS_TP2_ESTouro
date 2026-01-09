@@ -7,8 +7,7 @@ import java.awt.Rectangle;
 import bloon.Bloon;
 
 /**
- * Decorador que adiciona uma armadura ao bloon.
- * A armadura absorve dano até quebrar.
+ * Adiciona uma armadura que absorve dano normal
  */
 public class BloonArmadura extends BloonDecorator {
 
@@ -16,9 +15,6 @@ public class BloonArmadura extends BloonDecorator {
 
     /**
      * Cria um bloon com armadura
-     * 
-     * @param bloon o bloon a decorar
-     * @param armor a quantidade de dano que a armadura suporta
      */
     public BloonArmadura(Bloon bloon, int armor) {
         super(bloon);
@@ -27,11 +23,10 @@ public class BloonArmadura extends BloonDecorator {
 
     @Override
     public int pop(int estrago) {
-        // Verifica se a armadura ainda está ativa
+        // Se tem armadura, absorve dano
         if (armor > 0) {
-            // Subtrai o dano da armadura
             armor -= estrago;
-            // Se a armadura for quebrada (armor < 0), calcula o dano restante
+            // Se quebrou, o resto vai para o bloon
             if (armor < 0) {
                 int sobra = -armor;
                 armor = 0;

@@ -23,10 +23,6 @@ public class TiroSniper implements Projetil {
     /** Vida útil do efeito visual em frames (dura 5 frames (aprox 0.25s)). */
     private int vidaUtil = 5;
 
-    /**
-     * Construtor para criar um projétil visual do sniper.
-     * 
-     */
     public TiroSniper(Point inicio, Point fim) {
         this.inicio = inicio;
         this.fim = fim;

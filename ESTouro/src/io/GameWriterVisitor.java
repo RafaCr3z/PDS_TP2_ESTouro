@@ -12,16 +12,12 @@ public class GameWriterVisitor implements TorreVisitor {
     // Writer para saída dos dados
     private PrintWriter out;
 
-    /**
-     * Construtor para o visitor de escrita.
-     * 
-     */
     public GameWriterVisitor(PrintWriter out) {
         this.out = out;
     }
 
     /**
-     * Escreve a posição da torre no formato x\ty\t
+     * Escreve a posição da torre 
      * 
      */
     private void writePos(Torre t) {
@@ -46,14 +42,12 @@ public class GameWriterVisitor implements TorreVisitor {
 
     @Override
     public void visit(TorreCanhao t) {
-        // Escreve posição e tipo da torre canhão
         writePos(t);
         out.println(TorreConstantes.CANHAO);
     }
 
     @Override
     public void visit(TorreMorteiro t) {
-        // Escreve posição, tipo e área de alvo da torre morteiro
         writePos(t);
         out.print(TorreConstantes.MORTEIRO + "\t");
         Point p = t.getAreaAlvo();
@@ -62,7 +56,6 @@ public class GameWriterVisitor implements TorreVisitor {
 
     @Override
     public void visit(TorreBalista t) {
-        // Escreve posição, tipo e ângulo da torre balista
         writePos(t);
         out.print(TorreConstantes.BALISTA + "\t");
         out.println(t.getComponente().getAngulo());
@@ -70,14 +63,12 @@ public class GameWriterVisitor implements TorreVisitor {
 
     @Override
     public void visit(TorreNinja t) {
-        // Escreve posição e tipo da torre ninja
         writePos(t);
         out.println(TorreConstantes.NINJA);
     }
 
     @Override
     public void visit(TorreSniper t) {
-        // Escreve posição, tipo e ângulo da torre sniper
         writePos(t);
         out.print(TorreConstantes.SNIPER + "\t");
         out.println(t.getComponente().getAngulo());

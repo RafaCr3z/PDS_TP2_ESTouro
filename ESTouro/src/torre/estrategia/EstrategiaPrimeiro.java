@@ -5,7 +5,7 @@ import bloon.Bloon;
 import torre.Torre;
 
 /**
- * Estratégia de ataque que escolhe o bloon mais avançado no caminho (primeiro).
+ * Ataca o bloon mais à frente no caminho.
  */
 public class EstrategiaPrimeiro implements EstrategiaAtaque {
     @Override
@@ -13,7 +13,7 @@ public class EstrategiaPrimeiro implements EstrategiaAtaque {
         // Se não há bloons, retorna null
         if (bloons.isEmpty())
             return null;
-        // Escolhe o bloon com maior posição no caminho (mais à frente)
+        // Escolhe o bloon com maior avanço no caminho
         return bloons.stream()
                 .max((b1, b2) -> Integer.compare(b1.getPosicaoNoCaminho(), b2.getPosicaoNoCaminho()))
                 .orElse(null);
@@ -21,7 +21,6 @@ public class EstrategiaPrimeiro implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
-        // Retorna o nome da estratégia
         return "Primeiro";
     }
 }

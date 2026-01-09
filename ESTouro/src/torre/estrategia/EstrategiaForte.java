@@ -6,7 +6,7 @@ import bloon.Bloon;
 import torre.Torre;
 
 /**
- * Estratégia de ataque que escolhe o bloon com o maior valor (mais forte).
+ * Ataca o bloon mais valioso.
  */
 public class EstrategiaForte implements EstrategiaAtaque {
 
@@ -29,7 +29,6 @@ public class EstrategiaForte implements EstrategiaAtaque {
 
     @Override
     public String getNome() {
-        // Retorna o nome da estratégia
         return "Forte";
     }
 

@@ -11,7 +11,9 @@ import torre.projetil.BombaDirigida;
 import torre.projetil.Projetil;
 
 /**
- * Classe que representa a torre morteiro.
+ * Classe que representa a torre morteiro. Esta torre dispara uma bomba para um
+ * local concreto. A bomba explode quando chega ao destino. Ataca sempre, quer
+ * no local de ataque existam bloons ou não.
  */
 public class TorreMorteiro extends TorreDefault {
 
@@ -21,6 +23,7 @@ public class TorreMorteiro extends TorreDefault {
 	/**
 	 * Cria a torre Morteiro
 	 * 
+	 * @param img
 	 */
 	public TorreMorteiro(BufferedImage img) {
 		super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 3),
@@ -32,6 +35,7 @@ public class TorreMorteiro extends TorreDefault {
 	/**
 	 * devolve a zona para onde atira as bombas
 	 * 
+	 * @return a zona para onde atira as bombas
 	 */
 	public Point getAreaAlvo() {
 		return areaAlvo;
@@ -48,6 +52,7 @@ public class TorreMorteiro extends TorreDefault {
 	 * alcance. Se não estiver dentro de alcance, escolhe uma posição na mesma
 	 * direção que esteja dentro de alcance.
 	 * 
+	 * @param area a nova posição para onde atirar as bombas
 	 */
 	public void setAreaAlvo(Point area) {
 		// o centro do morteiro
@@ -96,11 +101,11 @@ public class TorreMorteiro extends TorreDefault {
 	protected Projetil[] criarProjeteis(Bloon alvo) {
 		if (areaAlvo == null)
 			return new Projetil[0];
-			
+
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 		Point disparo = getPontoDisparo();
-		
+
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
 		int px = (int) (disparo.x * cosA - disparo.y * senA);

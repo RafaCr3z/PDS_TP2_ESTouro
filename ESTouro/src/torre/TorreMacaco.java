@@ -18,6 +18,7 @@ public class TorreMacaco extends TorreDefault {
 	/**
 	 * Cria a torre macaco
 	 * 
+	 * @param img a imagem da torre
 	 */
 	public TorreMacaco(BufferedImage img) {
 		super(new ComponenteMultiAnimado(new Point(50, 50), img, 2, 4, 3), 30, 8, new Point(15, 15), 100);
@@ -28,7 +29,7 @@ public class TorreMacaco extends TorreDefault {
 		Point centro = getComponente().getPosicaoCentro();
 		double angle = getComponente().getAngulo();
 
-		// primeiro calcular o ponto de disparo
+		// calcular ponto de disparo
 		Point disparo = getPontoDisparo();
 		double cosA = Math.cos(angle);
 		double senA = Math.sin(angle);
